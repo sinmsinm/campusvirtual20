@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+
+<helpTools>
+	<category name="gestio-recursos">
+		<tool id = "sakai-resources" />
+		<tool id = "sakai-datacollector-biblioteca" />
+		<tool id = "sakai-dropbox" />
+		<tool id = "sakai-iframe" />
+		<tool id = "sakai-news" />
+		<tool id = "sakai-podcasts" />
+		<!-- <tool id = "sakai-kaltura" /> -->
+	</category>
+
+	<category name="comunicacio">
+		<tool id = "sakai-announcements" />
+                <tool id = "sakai-messages" />
+                <tool id = "sakai-forums" />
+                <tool id = "sakai-profile2" />
+                <tool id = "sakai-schedule" />
+		<tool id = "sakai-chat" />
+		<tool id = "sakai-mailbox" />
+		<tool id = "sakai-mailsender" />
+		<tool id = "sakai-bbb" />
+        </category>
+
+	<category name="elearning">
+		<tool id = "sakai-guiadocent-ice" />
+		<tool id = "sakai-assignment" />
+		<tool id = "sakai-gradebook-tool" />
+		<tool id = "sakai-site-roster" />
+		<tool id = "sakai-samigo" />
+		<tool id = "sakai-syllabus" />
+		<tool id = "sakai-lessonbuildertool" />
+		<tool id = "sakai-signup" />
+		<tool id = "sakai-sitestats" />
+		<tool id = "sakai-poll" />
+		<tool id = "sakai-rwiki" />
+		<tool id = "sakai-iframe-expedient" />
+		<tool id = "sakai-iframe-actes" />
+	</category>
+	
+	 <category name="gestio-config">
+		<tool id = "sakai-preferences" />
+		<tool id = "sakai-sitesetup" />
+		<tool id = "sakai-siteinfo" />
+		<tool id = "sakai-singleuser" />
+		<tool id = "sakai-resetpass" />
+	</category>
+
+	<category name="eines-externes">
+		<tool id = "sakai-basiclti" />
+	</category>
+
+	 <category name="resum">
+		<tool id = "sakai-summary-calendar" />
+		<tool id = "sakai-synoptic-messagecenter" />
+		<tool id = "sakai-synoptic-announcement" />
+		<tool id = "sakai-synoptic-chat" />
+	</category>
+
+	<category name="redireccions">
+		<tool id = "sakai-iframe-myworkspace" />
+		<tool id = "sakai-iframe-intranet" />
+		<tool id = "sakai-iframe-site" />
+		<tool id = "sakai-directori" />
+	</category>
+
+</helpTools>
