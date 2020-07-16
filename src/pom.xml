@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>master</artifactId>
+        <groupId>org.sakaiproject</groupId>
+        <version>20-SNAPSHOT</version>
+    </parent>
+
+    <name>Udl Sakai deployer</name>
+    <groupId>cat.udl.asic</groupId>
+    <artifactId>base</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+	<module>sakai</module>
+	<!-- <module>udl</module>
+	  <module>external</module>-->
+   </modules>
+
+</project>
