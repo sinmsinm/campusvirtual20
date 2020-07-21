@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>master</artifactId>
+        <groupId>org.sakaiproject</groupId>
+        <version>20-SNAPSHOT</version>
+    </parent>
+    
+    <name>Udl Tools deployer</name>
+    <groupId>cat.udl.asic</groupId>
+    <artifactId>udl-base</artifactId>
+    <packaging>pom</packaging>
+	
+	<modules>
+		<!-- <module>datacollector</module> 
+		<module>directori</module>
+		<module>helpdesk</module>
+		<module>reports</module>
+		<module>actes</module>
+		<module>enquestes</module>		
+		 -->
+		<module>cm</module>
+		<!-- <module>udl-jobs</module> -->
+	</modules>    
+    
+</project>

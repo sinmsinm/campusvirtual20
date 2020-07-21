@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-cascade="none" package="cat.udl.asic.cm.impl" default-lazy="true">
+
+    <class name="cat.udl.asic.cm.impl.AcademicSessionUdlCmImpl"
+        table="UDL_CM_ACADEMIC_SESSION">
+
+		<cache usage="nonstrict-read-write" />
+		
+        <id name="key" column="ACADEMIC_SESSION_ID" type="long">
+            <generator class="native" >
+                <param name="sequence">UDL_CM_ACADEMIC_SESSION_S</param>
+            </generator>
+        </id>       
+  
+        <property name="eid" column="ENTERPRISE_ID" type="string" unique="true" not-null="true" />
+        <property name="title" column="TITLE" type="string" not-null="true" />
+        <property name="description" column="DESCRIPTION" type="string" not-null="true" />
+        <property name="startDate" column="START_DATE" type="date" not-null="false" />
+        <property name="endDate" column="END_DATE" type="date" not-null="false" />
+        <property name="current" column="IS_CURRENT" type="boolean" not-null="true" />
+
+    </class>
+    
+   <query name="isUdlAcademicSessionDefined">
+        <![CDATA[
+        select count(term) from AcademicSessionUdlCmImpl as term where term.eid=:eid
+        ]]>
+    </query>
+
+    <query name="findUdlAcademicSessions">
+        <![CDATA[
+        from AcademicSessionUdlCmImpl as term order by term.startDate
+        ]]>
+    </query>
+
+    <query name="findUdlCurrentAcademicSessions">
+        <![CDATA[
+        from AcademicSessionUdlCmImpl as term where
+        	term.current=true
+        	order by term.startDate
+        ]]>
+    </query>
+
+</hibernate-mapping>

@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>course-management</artifactId>
+        <groupId>cat.udl.asic.cm</groupId>
+    	<version>1.2</version>
+    </parent>
+
+    <name>coursemanagement-udl-hibernate-pack</name>
+    <groupId>cat.udl.asic.cm</groupId>
+    <artifactId>coursemanagement-udl-hibernate-pack</artifactId>
+
+    <organization>
+        <name>Universitat de Lleida</name>
+        <url>http://www.udl.cat/</url>
+    </organization>
+    <inceptionYear>2013</inceptionYear>
+    <packaging>sakai-component</packaging>
+    
+    <properties>
+        <deploy.target>components</deploy.target>
+    </properties>
+    
+    <dependencies>
+        <dependency>
+            <groupId>org.sakaiproject.edu-services.course-management</groupId>
+            <artifactId>coursemanagement-hibernate-impl</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.sakaiproject.edu-services.course-management</groupId>
+                    <artifactId>coursemanagement-hibernate-model</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-test</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>aopalliance</groupId>
+                    <artifactId>aopalliance</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>odmg</groupId>
+                    <artifactId>odmg</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-digester</groupId>
+                    <artifactId>commons-digester</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-beanutils</groupId>
+                    <artifactId>commons-beanutils</artifactId>
+                </exclusion>
+            </exclusions>
+   	     </dependency>
+        <dependency>
+        	<artifactId>coursemanagement-udl-impl</artifactId>
+        	<groupId>cat.udl.asic.cm</groupId>
+        </dependency>
+        <dependency>
+        	<groupId>cat.udl.asic.cm</groupId>
+			<artifactId>coursemanagement-udl-hibernate</artifactId>
+        </dependency>
+        
+    </dependencies>
+    <build>
+        <resources />
+    </build>
+</project>

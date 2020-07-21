@@ -15,8 +15,8 @@
 
     <modules>
 	<module>sakai</module>
-	<!-- <module>udl</module>
-	  <module>external</module>-->
+	<module>udl</module>
+	 <!--  <module>external</module>-->
    </modules>
 
 </project>

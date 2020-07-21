@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-cascade="none" package="cat.udl.asic.cm.impl" default-lazy="true">
+	<class name="cat.udl.asic.cm.impl.SectionCategoryUdlCmImpl" table="UDL_CM_SEC_CATEGORY">
+
+		<cache usage="nonstrict-read-write" />
+
+        <id name="categoryCode" column="CAT_CODE" type="string">
+            <generator class="assigned"/>
+        </id>
+
+		<property name="categoryDescription" column="CAT_DESCR" type="string" />
+		<property name="readOnly" column="READONLY" type="boolean" />
+	</class>
+
+
+    <query name="findUdlSectionCategories">
+        <![CDATA[
+        select categoryCode from SectionCategoryUdlCmImpl as cat order by cat.categoryCode        
+        ]]>
+    </query>
+
+</hibernate-mapping>

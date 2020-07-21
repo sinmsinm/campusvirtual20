@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-cascade="none" package="cat.udl.asic.cm.impl" default-lazy="true">
+	<subclass name="cat.udl.asic.cm.impl.CourseSetUdlCmImpl" 
+		extends="cat.udl.asic.cm.impl.AbstractMembershipContainerUdlCmImpl">
+ 
+		<property name="category" column="CATEGORY" type="string" />
+		
+	<!--<many-to-one name="parent" column="PARENT_COURSE_SET" lazy="false" index="UDL_CM_COURSE_SET_PARENT_IDX" class="cat.udl.asic.cm.impl.CourseSetUdlCmImpl" />-->            	  
+ 
+		<set name="courseOfferings" table="UDL_CM_CSET_COFFERING_ASSOC" inverse="false">
+			<key column="COURSE_SET" />
+			<many-to-many class="cat.udl.asic.cm.impl.CourseOfferingUdlCmImpl" column="COURSE_OFFERING" />
+		</set>			
+	</subclass>		
+
+
+    <query name="isUdlCourseSetDefined">
+        <![CDATA[
+        select count(cs) from CourseSetUdlCmImpl as cs where cs.eid=:eid
+        ]]>
+    </query>
+
+	<query name="findUdlCourseSetByEid">
+        <![CDATA[
+        from CourseSetUdlCmImpl as courseSet where courseSet.eid=:eid
+        ]]>
+    </query>
+
+    <query name="findUdlTopLevelCourseSets"><!-- where courseSet.parent is null-->
+        <![CDATA[
+        from CourseSetUdlCmImpl as courseSet 
+        ]]>
+    </query>
+
+    <!--<query name="findChildCourseSets">
+        <![CDATA[
+        from CourseSetUdlCmImpl as courseSet where courseSet.parent.eid=:parentEid
+        ]]>
+    </query>-->
+
+    <query name="findUdlNonEmptyCourseSet">
+        <![CDATA[
+        from CourseSetUdlCmImpl as cs where cs.eid=:eid and size(cs.courseOfferings) > 0
+        ]]>
+    </query>
+
+    <query name="findUdlCourseSetByCategory">
+        <![CDATA[
+        from CourseSetUdlCmImpl as cs where cs.category=:category order by cs.title
+        ]]>
+    </query>
+
+     <query name="findUdlCourseSetRoles">
+        <![CDATA[
+        select cs.eid, mbr.role from  CourseSetUdlCmImpl as cs, MembershipUdlCmImpl as mbr
+        	where mbr.userId=:userEid and
+        	mbr.memberContainer=cs
+        ]]>
+    </query>
+	
+</hibernate-mapping>
