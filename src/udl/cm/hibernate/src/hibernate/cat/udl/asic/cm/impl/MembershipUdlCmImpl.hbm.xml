@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-cascade="none" package="cat.udl.asic.cm.impl" default-lazy="true">
+
+	<class name="cat.udl.asic.cm.impl.MembershipUdlCmImpl" table="UDL_CM_MEMBERSHIP">
+
+		<cache usage="nonstrict-read-write" />
+
+		<id name="key" column="MEMBER_ID" type="long">
+			<generator class="native">
+				<param name="sequence">UDL_CM_MEMBERSHIP_S</param>
+			</generator>
+		</id>
+
+		<version name="version" type="integer" column="VERSION" />
+
+		<property name="userId" column="USER_ID" unique-key="CM_MBR" not-null="true" index="UDL_CM_MBR_USER" />
+		<property name="role" column="ROLE" type="string" not-null="true" />
+
+		<many-to-one name="memberContainer" column="MEMBER_CONTAINER_ID" unique-key="CM_MBR" index="UDL_CM_MBR_CTR" class="cat.udl.asic.cm.impl.AbstractMembershipContainerUdlCmImpl" />
+                <property name="status" column="STATUS" type="string" />
+
+	</class>
+
+</hibernate-mapping>

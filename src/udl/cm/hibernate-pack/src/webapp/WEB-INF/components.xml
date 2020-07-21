@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	
+		<bean id="org.sakaiproject.springframework.orm.hibernate.impl.AdditionalHibernateMappingsImpl.coursemanagementUdL"
+		class="org.sakaiproject.springframework.orm.hibernate.impl.AdditionalHibernateMappingsImpl">
+		<property name="mappingResources">
+			<list>
+                <value>cat/udl/asic/cm/impl/AcademicSessionUdlCmImpl.hbm.xml</value>
+				<value>cat/udl/asic/cm/impl/MembershipContainerUdlCmImpl.hbm.xml</value>										
+                <value>cat/udl/asic/cm/impl/MembershipUdlCmImpl.hbm.xml</value>
+                <value>cat/udl/asic/cm/impl/SectionUdlCmImpl.hbm.xml</value>
+                <value>cat/udl/asic/cm/impl/SectionCategoryUdlCmImpl.hbm.xml</value>
+                <value>cat/udl/asic/cm/impl/CourseOfferingUdlCmImpl.hbm.xml</value>                
+				<value>cat/udl/asic/cm/impl/CourseSetUdlCmImpl.hbm.xml</value>
+				<value>cat/udl/asic/cm/impl/EnrollmentUdlCmImpl.hbm.xml</value>
+                <value>cat/udl/asic/cm/impl/EnrollmentSetUdlCmImpl.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="cat.udl.asic.cm.impl.CourseManagementServiceUdlFederatedImpl"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"
+		lazy-init="true">
+		<property name="transactionManager">
+			<ref bean="org.sakaiproject.springframework.orm.hibernate.GlobalTransactionManager" />
+		</property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="*">PROPAGATION_REQUIRED,readOnly,+org.sakaiproject.coursemanagement.api.exception.IdNotFoundException</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="org.sakaiproject.coursemanagement.impl.CourseManagementServiceFederatedImpl">
+            	<property name="implList">
+            		<!-- List the implementations here, in descending order of authority -->
+            		<list>
+			          	 	<bean class="cat.udl.asic.cm.impl.UdlCourseManagementHibernateImpl" 
+			            	init-method="init" destroy-method="destroy">
+							<property name="sessionFactory">
+								<ref bean="org.sakaiproject.springframework.orm.hibernate.GlobalSessionFactory" />
+							</property>
+						</bean>
+					</list>
+            	</property>
+            </bean>
+        </property>
+	</bean>
+
+ </beans>
+

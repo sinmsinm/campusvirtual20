@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-cascade="none" package="cat.udl.asic.cm.impl" default-lazy="true">
+	<subclass name="cat.udl.asic.cm.impl.SectionUdlCmImpl"
+			extends="cat.udl.asic.cm.impl.AbstractMembershipContainerUdlCmImpl">
+
+		<property name="category" column="CATEGORY" type="string" />
+
+		<many-to-one name="courseOffering" column="COURSE_OFFERING" index="UDL_CM_SECTION_COURSE_IDX" class="cat.udl.asic.cm.impl.CourseOfferingUdlCmImpl" />
+		<many-to-one name="enrollmentSet" column="ENROLLMENT_SET" lazy="false" index="UDL_CM_SECTION_ENR_SET_IDX" class="cat.udl.asic.cm.impl.EnrollmentSetUdlCmImpl" />
+		<!--<many-to-one name="parent" column="PARENT_SECTION" lazy="false" index="UDL_CM_SECTION_PARENT_IDX" class="cat.udl.asic.cm.impl.SectionUdlCmImpl" />-->
+
+		<!--<set name="meetings" inverse="true" cascade="all" lazy="false">
+		    <key column="SECTION_ID"/>
+		    <one-to-many class="org.sakaiproject.coursemanagement.impl.MeetingCmImpl"/>
+		</set>-->
+
+		<property name="maxSize" type="integer" column="MAXSIZE" not-null="false" />
+
+	</subclass>
+	    
+    <query name="isUdlSectionDefined">
+        <![CDATA[
+        select count(sec) from SectionUdlCmImpl as sec where sec.eid=:eid
+        ]]>
+    </query>
+
+   <query name="findUdlSectionByEid">
+        <![CDATA[
+        from SectionUdlCmImpl as sec where sec.eid=:eid
+        ]]>
+    </query>
+    
+    <query name="findUdlTopLevelSectionsInCourseOffering"> <!-- and sec.parent is null-->
+        <![CDATA[
+        from SectionUdlCmImpl as sec where sec.courseOffering=:courseOffering 
+        ]]>
+    </query>  
+
+<!--    <query name="findUdlChildSections">
+        <![CDATA[
+        from SectionUdlCmImpl as sec where sec.parent.eid=:parentEid
+        ]]>
+    </query>
+-->
+
+    <query name="findUdlSectionRoles">
+        <![CDATA[
+        select section.eid, mbr.role from SectionUdlCmImpl as section, MembershipUdlCmImpl as mbr
+        	where mbr.userId=:userEid and
+        	mbr.memberContainer=section
+        ]]>
+</query>    
+
+      <query name="findUdlSectionRolesByAcademicSession">
+        <![CDATA[
+        select section.eid, mbr.role from SectionUdlCmImpl as section, MembershipCmImpl as mbr
+            where mbr.userId=:userEid and
+            mbr.memberContainer=section and
+            section.courseOffering.academicSession.eid=:academicSessionEid
+        ]]>
+    </query>
+
+	<query name="findUdlInstructingSections">
+        <![CDATA[
+        select sec from SectionUdlCmImpl as sec, EnrollmentSetUdlCmImpl as es
+        	where :userId in elements(es.officialInstructors) and
+        	sec.enrollmentSet = es
+        ]]>
+    </query>
+
+	<query name="findUdlInstructingSectionsByAcademicSession">
+        <![CDATA[
+        select sec from SectionUdlCmImpl as sec, EnrollmentSetUdlCmImpl as es
+        	where :userId in elements(es.officialInstructors) and
+        	sec.enrollmentSet = es and
+        	sec.courseOffering.academicSession.eid=:academicSessionEid               
+        ]]>
+    </query>
+    
+	<query name="findUdlEnrolledSections">
+        <![CDATA[        
+        select sec from SectionUdlCmImpl as sec, EnrollmentUdlCmImpl as enr
+        	where enr.userId = :userId and
+        	sec.enrollmentSet = enr.enrollmentSet and
+        	enr.dropped=false
+        ]]>
+    </query>
+    
+</hibernate-mapping>

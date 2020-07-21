@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-cascade="none" package="cat.udl.asic.cm.impl" default-lazy="true">
+	<subclass name="cat.udl.asic.cm.impl.CourseOfferingUdlCmImpl"
+			extends="cat.udl.asic.cm.impl.AbstractMembershipContainerUdlCmImpl">
+
+        <property name="status" column="STATUS" type="string" />
+
+		<!-- Relaciona COURSE_OFFERING AMB CANONICAL_COURSES -->
+		<!--<many-to-one name="crossListing" column="CROSS_LISTING" class="org.sakaiproject.coursemanagement.impl.CrossListingCmImpl" />-->
+ 		
+		<many-to-one name="academicSession" column="ACADEMIC_SESSION" lazy="false" index="UDL_CM_CO_ACADEMIC_SESS_IDX" class="cat.udl.asic.cm.impl.AcademicSessionUdlCmImpl" />
+
+		<set name="courseSets" table="UDL_CM_CSET_COFFERING_ASSOC" inverse="true">
+			<key column="COURSE_OFFERING" />
+			<many-to-many class="cat.udl.asic.cm.impl.CourseSetUdlCmImpl" column="COURSE_SET" />
+		</set>
+
+	</subclass>
+
+    <query name="isUdlCourseOfferingDefined">
+        <![CDATA[
+        select count(co) from CourseOfferingCmImpl as co where co.eid=:eid
+        ]]>
+    </query>
+	
+   <!--  <query name="findUdlCourseOfferingByEid">
+        <![CDATA[
+        from CourseOfferingUdlCmImpl as co where co.eid=:eid
+        ]]>
+    </query>
+  -->
+    <!-- <query name="findCourseOfferingsByCanonicalCourse">
+        <![CDATA[
+        from CourseOfferingCmImpl as co where co.canonicalCourse.eid=:canonicalCourseEid
+        ]]>
+    </query>
+-->
+    <query name="findUdlCourseOfferingsByCourseSetAndAcademicSession">
+        <![CDATA[
+        select co from CourseOfferingUdlCmImpl as co, CourseSetUdlCmImpl as cs where
+        	cs.eid=:courseSetEid and
+        	co.academicSession.eid = :academicSessionEid and
+        	cs in elements(co.courseSets)
+        ]]>
+    </query> 
+    
+   <!-- 
+    <query name="findActiveCourseOfferingsInCanonicalCourse">
+    <![CDATA[from CourseOfferingCmImpl where start_date <= now() 
+    	and end_date>=now() and class_discr='org.sakaiproject.coursemanagement.impl.CourseOfferingCmImpl' 
+    	and canonicalCourse = :canonicalCourse);
+    ]]>
+    </query>
+    -->
+    <query name="findUdlCourseOfferingRoles">
+        <![CDATA[
+        select co.eid, mbr.role from  CourseOfferingUdlCmImpl as co, MembershipUdlCmImpl as mbr
+        	where mbr.userId=:userEid and
+        	mbr.memberContainer=co
+        ]]>
+    </query>
+	
+</hibernate-mapping>

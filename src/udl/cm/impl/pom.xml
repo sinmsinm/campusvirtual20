@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+        <artifactId>course-management</artifactId>
+        <groupId>cat.udl.asic.cm</groupId>
+    	<version>1.2</version>
+    </parent>
+
+	<name>coursemanagement-udl-impl</name>
+	<groupId>cat.udl.asic.cm</groupId>
+	<artifactId>coursemanagement-udl-impl</artifactId>
+
+	<organization>
+		<name>Universitat de Lleida</name>
+		<url>http://www.udl.cat/</url>
+	</organization>
+
+	<inceptionYear>2012</inceptionYear>
+	<packaging>jar</packaging>
+	<properties>
+		<deploy.target />
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.sakaiproject.kernel</groupId>
+			<artifactId>sakai-kernel-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.sakaiproject.edu-services.course-management</groupId>
+			<artifactId>coursemanagement-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+        	<groupId>cat.udl.asic.cm</groupId>
+			<artifactId>coursemanagement-udl-hibernate</artifactId>
+			<scope>provided</scope>
+        </dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${sakai.hibernate.version}</version>
+		</dependency>
+			<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+		</dependency>
+	</dependencies>
+	<reports />
+	
+</project>
