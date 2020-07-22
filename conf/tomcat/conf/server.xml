@@ -105,7 +105,8 @@
                    acceptCount="25"
                    minSpareThreads="25"
                    maxConnections="10000"
-                   keepAliveTimeout="20000"
+		   keepAliveTimeout="20000"
+		   secretRequired="false"
 		   />
 
     <!-- An Engine represents the entry point (within Catalina) that processes
