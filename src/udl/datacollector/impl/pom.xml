@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<name>Sakai Datacollector Implementation</name>
+	<groupId>cat.udl.asic.datacollector</groupId>
+	<artifactId>datacollector-impl</artifactId>
+	<organization>
+		<name>Universitat de Lleida</name>
+		<url>http://www.udl.cat</url>
+	</organization>
+	<inceptionYear>2010</inceptionYear>
+	<description>Datacollector implementation</description>
+	<packaging>jar</packaging>
+
+	<!-- the base is parent -->
+	<parent>
+		<groupId>cat.udl.asic</groupId>
+		<artifactId>datacollector</artifactId>
+		<version>1.10-SNAPSHOT</version><!--Datacollector.version -->
+	</parent>
+
+	<repositories>
+		<repository>
+			<id>proasic</id>
+			<name>UdL local repository</name>
+			<layout>default</layout>
+			<url>http://proasic.udl.cat/m2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+
+	<dependencies>
+
+		<!-- internal dependencies -->
+		<dependency>
+			<groupId>cat.udl.asic.datacollector</groupId>
+			<artifactId>datacollector-api</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>cat.udl.asic.datacollector</groupId>
+			<artifactId>datacollector-jobs</artifactId>
+		</dependency>
+
+		<!-- shared external dependencies -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+		</dependency>
+
+		<dependency> <!-- Dependency with some data types, you must install on your private repository -->
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc14</artifactId>
+			<version>10.2.0.2.0</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.sakaiproject.entitybroker</groupId>
+			<artifactId>entitybroker-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.sakaiproject.entitybroker</groupId>
+			<artifactId>entitybroker-utils</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.sakaiproject.kernel</groupId>
+			<artifactId>sakai-kernel-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.sakaiproject.kernel</groupId>
+			<artifactId>sakai-component-manager</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.sakaiproject.kernel</groupId>
+			<artifactId>sakai-kernel-util</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>${sakai.ehcache.groupId}</groupId>
+			<artifactId>${sakai.ehcache.artifactId}</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.sakaiproject.scheduler</groupId>
+			<artifactId>scheduler-api</artifactId>
+		</dependency>
+
+		 <dependency>
+	        <groupId>org.quartz-scheduler</groupId>
+        	<artifactId>quartz</artifactId>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.sakaiproject.scheduler</groupId>
+			<artifactId>scheduler-component-shared</artifactId>
+		</dependency>
+
+	</dependencies>
+	
+</project>

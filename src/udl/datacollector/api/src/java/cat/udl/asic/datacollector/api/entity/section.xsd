@@ -1,0 +1,786 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="section">
+		<xs:annotation>
+			<xs:documentation>
+				That element is the description of all elements of
+				the
+				section. It has two children, one to define the source
+				data
+				elements and other to define the template that must
+				paint that
+				section
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence maxOccurs="1" minOccurs="1">
+				<xs:element name="view">
+					<xs:annotation>
+						<xs:documentation>
+							That element defines all configuration about how
+							to paint the template
+						</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="templateSrc">
+							<xs:annotation>
+								<xs:documentation>
+									This is the name of the file that
+									paints the
+									section: Ex:
+									template1.html
+								</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="messagesSrc" use="optional">
+							<xs:annotation>
+								<xs:documentation>
+									This is the name of the file that
+									paints the
+									section: Ex:
+									template1.html
+								</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+
+				<xs:element name="datasources">
+					<xs:annotation>
+						<xs:documentation>
+							Inside this element has all children with
+							datasources
+						</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="datasource" minOccurs="0" maxOccurs="500">
+								<xs:annotation>
+									<xs:documentation>
+										A datasource represents a pice
+										of data. That
+										data has an id to
+										reference it from code and
+										attributes to
+										search the place
+										to store it (table, column, etc)
+									</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+
+										<xs:element name="parameters" minOccurs="0"
+											maxOccurs="1">
+											<xs:annotation>
+												<xs:documentation>
+													Set of parameters
+													used to restrict the
+													query
+												</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="parameter" maxOccurs="100"
+														minOccurs="0">
+														<xs:complexType>
+															<xs:attribute name="id">
+																<xs:annotation>
+																	<xs:documentation>
+																		the
+																		id
+																		that
+																		we
+																		should
+																		use
+																		in
+																		code
+																		to
+																		localize
+																		the
+																		parameter
+																	</xs:documentation>
+																</xs:annotation>
+															</xs:attribute>
+															<xs:attribute name="columnName">
+																<xs:annotation>
+																	<xs:documentation>
+																		Common
+																		name
+																		of
+																		parameter
+																	</xs:documentation>
+																</xs:annotation>
+															</xs:attribute>
+															<xs:attribute name="defaultValue">
+																<xs:annotation>
+																	<xs:documentation>
+																		A
+																		default
+																		value
+																		for
+																		initialize
+																		in
+																		case
+																		that
+																		value
+																		is
+																		not
+																		set
+																		in
+																		the
+																		section
+																		setting
+																		up
+																		process.
+																	</xs:documentation>
+																</xs:annotation>
+															</xs:attribute>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+
+
+
+										<xs:element name="datasourcecolumns" minOccurs="0"
+											maxOccurs="1">
+											<xs:annotation>
+												<xs:documentation>
+													Set of
+													datasourcecolumns
+												</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+
+													<xs:element name="datasourcecolumn" minOccurs="0"
+														maxOccurs="120">
+														<xs:annotation>
+															<xs:documentation>
+																when the
+																datasource
+																is a
+																composed
+																(represent
+																more
+																than 1
+																datasource
+																values)
+																datatsouce
+																it
+																should
+																define a
+																collection
+																of
+																datasourcecolumn
+																to know
+																which
+																elements
+																are
+																interested
+																to get
+																from the
+																row.
+															</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="id" type="xs:string">
+																<xs:annotation>
+																	<xs:documentation>
+																		the
+																		id
+																		is
+																		used
+																		to
+																		be
+																		able
+																		to
+																		reference
+																		that
+																		element
+																		value
+																		from
+																		code
+																	</xs:documentation>
+																</xs:annotation>
+															</xs:attribute>
+															<xs:attribute name="columnName" type="xs:string">
+																<xs:annotation>
+																	<xs:documentation>
+																		The
+																		name
+																		of
+																		the
+																		section
+																		or
+																		id
+																		of
+																		a
+																		bundle
+																		to
+																		the
+																		i18n.
+																	</xs:documentation>
+																</xs:annotation>
+															</xs:attribute>
+															<xs:attribute name="description" type="xs:string" />
+
+
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+
+										</xs:element>
+
+										<xs:element name="events" maxOccurs="1" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>
+													Set of
+													datasourcecolumns
+												</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="event" minOccurs="1"
+														maxOccurs="3">
+														<xs:annotation>
+															<xs:documentation>
+																Event
+																element
+															</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="query" minOccurs="1"
+																	maxOccurs="128">
+																	<xs:annotation>
+																		<xs:documentation>
+																		Element
+																		per
+																		fer
+																		una
+																		consulta
+																		</xs:documentation>
+																	</xs:annotation>
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="parameters" minOccurs="0"
+																				maxOccurs="1">
+																				<xs:annotation>
+																					<xs:documentation>
+																						Set
+																						of
+																						parameters
+																						used
+																						to
+																						restrict
+																						the
+																						query
+																					</xs:documentation>
+																				</xs:annotation>
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="parameter" maxOccurs="100"
+																							minOccurs="0">
+																							<xs:complexType>
+																								<xs:attribute name="id">
+																									<xs:annotation>
+																										<xs:documentation>
+																											the
+																											id
+																											that
+																											we
+																											should
+																											use
+																											in
+																											code
+																											to
+																											localize
+																											the
+																											parameter
+																										</xs:documentation>
+																									</xs:annotation>
+																								</xs:attribute>
+																								<xs:attribute name="from">
+																									<xs:annotation>
+																										<xs:documentation>
+																											Place
+																											to
+																											get
+																											that
+																											parameter
+																											query
+																											or
+																											section
+																										</xs:documentation>
+																									</xs:annotation>
+																								</xs:attribute>
+																								<xs:attribute name="defaultValue"
+																									use="optional">
+																									<xs:annotation>
+																										<xs:documentation>
+																											A
+																											default
+																											value
+																											for
+																											initialize
+																											in
+																											case
+																											that
+																											value
+																											is
+																											not
+																											set
+																											in
+																											the
+																											section
+																											setting
+																											up
+																											process.
+																										</xs:documentation>
+																									</xs:annotation>
+																								</xs:attribute>
+																							</xs:complexType>
+																						</xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																			<xs:element name="datasourcecolumns"
+																				minOccurs="0" maxOccurs="1">
+																				<xs:annotation>
+																					<xs:documentation>
+																						Set
+																						of
+																						datasourcecolumns
+																					</xs:documentation>
+																				</xs:annotation>
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="datasourcecolumn"
+																							minOccurs="0" maxOccurs="120">
+																							<xs:annotation>
+																								<xs:documentation>
+																									when
+																									the
+																									query
+																									columns
+																								</xs:documentation>
+																							</xs:annotation>
+																							<xs:complexType>
+																								<xs:attribute name="id" type="xs:string">
+																									<xs:annotation>
+																										<xs:documentation>
+																											the
+																											id
+																											is
+																											used
+																											to
+																											be
+																											able
+																											to
+																											reference
+																											that
+																											element
+																											value
+																											from
+																											code
+																										</xs:documentation>
+																									</xs:annotation>
+																								</xs:attribute>
+																								<xs:attribute name="columnName"
+																									type="xs:string">
+																									<xs:annotation>
+																										<xs:documentation>
+																											The
+																											name
+																											of
+																											the
+																											section
+																											or
+																											id
+																											of
+																											a
+																											bundle
+																											to
+																											the
+																											i18n.
+																										</xs:documentation>
+																									</xs:annotation>
+																								</xs:attribute>
+																								<xs:attribute name="description"
+																									type="xs:string" />
+
+																							</xs:complexType>
+																						</xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+
+																			</xs:element>
+																		</xs:sequence>
+																		<xs:attribute name="id" use="required"
+																			type="xs:string">
+																			<xs:annotation>
+																				<xs:documentation>
+																					Id
+																					of
+																					the
+																					query
+																				</xs:documentation>
+																			</xs:annotation>
+																		</xs:attribute>
+																		<xs:attribute name="statement" use="required"
+																			type="xs:string">
+																			<xs:annotation>
+																				<xs:documentation>
+																					The
+																					sql
+																					statement
+																					to
+																					execute
+																				</xs:documentation>
+																			</xs:annotation>
+																		</xs:attribute>
+																		<xs:attribute name="output" use="required">
+																			<xs:annotation>
+																				<xs:documentation>
+																					Where
+																					to
+																					flush
+																					the
+																					response
+																				</xs:documentation>
+																			</xs:annotation>
+																			<xs:simpleType>
+																				<xs:restriction base="xs:string">
+																					<xs:enumeration value="return" />
+																					<xs:enumeration value="query" />
+																					<xs:enumeration value="session" />
+																					<xs:enumeration value="none" />
+																				</xs:restriction>
+																			</xs:simpleType>
+																		</xs:attribute>
+																		<xs:attribute name="type" use="required">
+																			<xs:annotation>
+																				<xs:documentation>
+																					Its
+																					update
+																					or
+																					read
+																				</xs:documentation>
+																			</xs:annotation>
+																			<xs:simpleType>
+																				<xs:restriction base="xs:string">
+																					<xs:enumeration value="read" />
+																					<xs:enumeration value="write" />
+																					<xs:enumeration value="reference" />
+																				</xs:restriction>
+																			</xs:simpleType>
+
+																		</xs:attribute>
+																		<xs:attribute name="columnName" use="optional"
+																			type="xs:string">
+																			<xs:annotation>
+																				<xs:documentation>
+																					Its
+																					update
+																					or
+																					read
+																				</xs:documentation>
+																			</xs:annotation>
+																		</xs:attribute>
+
+																		<xs:attribute name="onSuccess" use="optional"
+																			type="xs:string">
+																			<xs:annotation>
+																				<xs:documentation>
+																					What
+																					to
+																					do
+																					when
+																					query
+																					success
+																					(only
+																					in
+																					sequence
+																					mode)
+																				</xs:documentation>
+																			</xs:annotation>
+																		</xs:attribute>
+																		<xs:attribute name="onFail" use="optional"
+																			type="xs:string">
+																			<xs:annotation>
+																				<xs:documentation>
+																					What
+																					to
+																					de
+																					when
+																					query
+																					fails
+																					(only
+																					in
+																					sequence
+																					mode)
+																				</xs:documentation>
+																			</xs:annotation>
+																		</xs:attribute>
+																		<xs:attribute name="onEmpty" use="optional"
+																			type="xs:string">
+																			<xs:annotation>
+																				<xs:documentation>
+																					What
+																					to
+																					do
+																					whent
+																					query
+																					not
+																					fails
+																					but
+																					is
+																					empty
+																				</xs:documentation>
+																			</xs:annotation>
+																		</xs:attribute>
+																		<xs:attribute name="onNonEmpty" use="optional"
+																			type="xs:string">
+																			<xs:annotation>
+																				<xs:documentation>
+																					What
+																					to
+																					do
+																					whent
+																					query
+																					not
+																					fails
+																					but
+																					is
+																					not
+																					empty
+																				</xs:documentation>
+																			</xs:annotation>
+																		</xs:attribute>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+															<xs:attribute name="type">
+																<xs:annotation>
+																	<xs:documentation>
+																		type
+																		of
+																		event
+																		can
+																		be
+																		put
+																		get
+																		or
+																		delet
+																	</xs:documentation>
+																</xs:annotation>
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:enumeration value="get" />
+																		<xs:enumeration value="put" />
+																		<xs:enumeration value="delete" />
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:attribute>
+															<xs:attribute name="flowMode" >
+																<xs:annotation>
+																	<xs:documentation>
+																		Indicate
+																		the
+																		mode
+																		of
+																		navigating
+																	</xs:documentation>
+																</xs:annotation>
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:enumeration value="transaction" />
+																		<xs:enumeration value="sequence" />
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:attribute>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="id">
+										<xs:annotation>
+											<xs:documentation>
+												The id of the datasource
+												inside that
+												section. It
+												should be unique on it.
+												That id would help to
+												get
+												the element in code.
+											</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="name">
+										<xs:annotation>
+											<xs:documentation>
+												The name of the section
+												or id of a bundle to
+												the
+												i18n.
+											</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="type">
+										<xs:annotation>
+											<xs:documentation>
+												Could be simple or
+												composed
+											</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="collection.value" />
+												<xs:enumeration value="simple.value" />
+												<xs:enumeration value="event.value" />
+												<xs:enumeration value="authz.value" />
+												<xs:enumeration value="scheduler.value" />
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="updatable" default="false"
+										use="optional" type="xs:boolean">
+										<xs:annotation>
+											<xs:documentation>
+												It defines if the value
+												could be updated in
+												the
+												db.
+											</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="readable" default="true" use="optional"
+										type="xs:boolean">
+										<xs:annotation>
+											<xs:documentation>
+												It defines if the value
+												could be readed in
+												the
+												db.
+											</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="deletable" default="false"
+										use="optional" type="xs:boolean">
+										<xs:annotation>
+											<xs:documentation>
+												It defines if the value
+												could be deleted in
+												the
+												db.
+											</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="escapeHtml" default="true" 
+									use="optional" type="xs:boolean">
+										<xs:annotation>
+											<xs:documentation>
+												It defines whether or not he value
+												should be reviewed by Antisamy in
+												order to avoid XSS issues.
+											</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>									
+									<xs:attribute name="tableSrc" use="optional">
+										<xs:annotation>
+											<xs:documentation>
+												The table where the
+												value is
+											</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="columnName" use="optional">
+										<xs:annotation>
+											<xs:documentation>
+												The column name of the
+												table where is the
+												value
+											</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+
+									<xs:attribute name="providerId" use="optional">
+										<xs:annotation>
+											<xs:documentation>
+												ProviderId to choose
+												implementation to get
+												and save values
+
+											</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="properties" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							Extra properties for this section
+						</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="property" maxOccurs="50" minOccurs="0">
+								<xs:complexType>
+									<xs:attribute name="id">
+										<xs:annotation>
+											<xs:documentation>
+												the identifier of property
+											</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="value">
+										<xs:annotation>
+											<xs:documentation> value of property
+											</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>
+						The id of the section, it must be unique.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>
+						The name of the section or id of a bundle to the
+						i18n.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="description" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>
+						The description of the section or id of a bundle
+						to the i18n.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="longdescription" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>
