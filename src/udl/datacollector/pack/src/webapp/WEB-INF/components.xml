@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+        "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!--  hello -->
+	<bean id="cat.udl.asic.datacollector.impl.component.RegisterHelper"
+		class="cat.udl.asic.datacollector.impl.component.RegisterHelperImpl"
+		init-method="init" scope="singleton" />
+
+	<bean id="cat.udl.asic.datacollector.api.service.DataCollectorService"
+		class="cat.udl.asic.datacollector.impl.component.ComposedDataCollectorServiceImpl"
+		scope="singleton">
+		<property name="serviceManager">
+			<ref bean="cat.udl.asic.datacollector.api.DataSourceServiceManager" />
+		</property>
+		<property name="importService">
+			<ref bean="cat.udl.asic.datacollector.api.ImportService" />
+		</property>
+	</bean>
+
+	<bean id="cat.udl.asic.datacollector.api.DataSourceServiceManager"
+		class="cat.udl.asic.datacollector.impl.component.DataSourceServiceManager"
+		scope="singleton">
+		<property name="dataSourceServiceList">
+			<map>
+				<entry key="default" value-ref="cat.udl.asic.datacollector.prov1" />
+				<entry key="consulta" value-ref="cat.udl.asic.datacollector.prov2" />
+				<entry key="temporal" value-ref="cat.udl.asic.datacollector.prov3" />
+				<entry key="config" value-ref="cat.udl.asic.datacollector.prov4" />
+				<entry key="trans" value-ref="cat.udl.asic.datacollector.prov5" />
+				<entry key="job" value-ref="cat.udl.asic.datacollector.prov6" />
+				<entry key="ldap1" value-ref="cat.udl.asic.datacollector.prov7" />
+				<entry key="test" value-ref="cat.udl.asic.datacollector.prov8" />
+				<entry key="dynamic" value-ref="cat.udl.asic.datacollector.prov9" />
+				<entry key="basic-sakai-authz" value-ref="cat.udl.asic.datacollector.prov10" />
+				<entry key="scheduler" value-ref="cat.udl.asic.datacollector.prov11" />
+				<entry key="gacademica" value-ref="cat.udl.asic.datacollector.prov13" />
+				<entry key="ePreinscripcio" value-ref="cat.udl.asic.datacollector.prov14" />
+				<entry key="preinscripcio" value-ref="cat.udl.asic.datacollector.prov15" />
+				<entry key="avaldocent2" value-ref="cat.udl.asic.datacollector.prov16" />
+				<entry key="avaldocent0809" value-ref="cat.udl.asic.datacollector.prov16" />
+				<entry key="correuObert" value-ref="cat.udl.asic.datacollector.prov17" />
+				<entry key="eCorreuObert" value-ref="cat.udl.asic.datacollector.prov18" />
+				<entry key="bd-sakai" value-ref="cat.udl.asic.datacollector.prov19" />
+				<entry key="gacademicaEvented" value-ref="cat.udl.asic.datacollector.prov20" />
+				<entry key="ldapEvented" value-ref="cat.udl.asic.datacollector.prov21" />
+				<entry key="geconomicaEvented" value-ref="cat.udl.asic.datacollector.prov22"/>
+				<entry key="geconomica" value-ref="cat.udl.asic.datacollector.prov23"/> 
+				<entry key="eFirstYear" value-ref="cat.udl.asic.datacollector.prov24"/>
+			</map>
+		</property>
+	</bean>
+
+
+
+	<bean id="cat.udl.asic.datacollector.api.ImportService" class="cat.udl.asic.datacollector.impl.component.DomImportImpl"
+		scope="singleton">
+		<property name="blocksPath">
+			<value>/home/sakai2.6.x/server/apache-tomcat-5.5.26/sakai/dataCollector/blocks/
+			</value>
+		</property>
+		<property name="sectionsPath">
+			<value>/home/sakai2.6.x/server/apache-tomcat-5.5.26/sakai/dataCollector/sections/
+			</value>
+		</property>
+		<property name="sectionSchemaFile">
+			<value>/home/sakai2.6.x/server/apache-tomcat-5.5.26/sakai/dataCollector/sections/section.xsd
+			</value>
+		</property>
+	</bean>
+
+	<bean id="cat.udl.asic.datacollector.prov1"
+		class="cat.udl.asic.datacollector.impl.component.DBDataSourceServiceImpl"
+		init-method="init" scope="singleton">
+		<property name="sqlService">
+			<ref bean="cat.udl.asic.datacollector.api.SqlService.Service1" />
+		</property>
+	</bean>
+
+	<bean id="cat.udl.asic.datacollector.prov2"
+		class="cat.udl.asic.datacollector.impl.component.DBDataSourceServiceImpl"
+		init-method="init" scope="singleton">
+		<property name="sqlService">
+			<ref bean="cat.udl.asic.datacollector.api.SqlService.Service2" />
+		</property>
+	</bean>
+
+	<bean id="cat.udl.asic.datacollector.prov3"
+		class="cat.udl.asic.datacollector.impl.component.DBDataSourceServiceImpl"
+		init-method="init" scope="singleton">
+		<property name="sqlService">
+			<ref bean="cat.udl.asic.datacollector.api.SqlService.Service2" />
+		</property>
+	</bean>
+
+
+	<bean id="cat.udl.asic.datacollector.prov4"
+		class="cat.udl.asic.datacollector.impl.component.DBDataSourceServiceImpl"
+		init-method="init" scope="singleton">
+		<property name="sqlService">
+			<ref bean="cat.udl.asic.datacollector.api.SqlService.Service2" />
+		</property>
+	</bean>
+
+	<bean id="cat.udl.asic.datacollector.prov5"
+		class="cat.udl.asic.datacollector.impl.component.PDIDataSourceServiceImpl"
+		init-method="init" scope="singleton">
+		<property name="server" value="http://localhost:11080/kettle"></property>
+		<property name="start" value="/startTrans"></property>
+		<property name="status" value="/transStatus"></property>
+		<property name="user" value=""></property>
+		<property name="password" value=""></property>
+	</bean>
+
+	<bean id="cat.udl.asic.datacollector.prov6"
+		class="cat.udl.asic.datacollector.impl.component.PDIDataSourceServiceImpl"
+		init-method="init" scope="singleton">
+		<property name="server" value="http://localhost:11080/kettle"></property>
+		<property name="start" value="/startJob"></property>
+		<property name="status" value="/jobStatus"></property>
+		<property name="user" value=""></property>
+		<property name="password" value=""></property>
+	</bean>
+
+	<bean id="cat.udl.asic.datacollector.prov7"
+		class="cat.udl.asic.datacollector.impl.component.LDAPDataSourceServiceImpl"
+		init-method="init" scope="singleton">
+		<property name="ldapServer" value=""></property>
+		<property name="port" value=""></property>
+		<property name="securityPrincipal" value=""></property>
+		<property name="securityCredentials" value=""></property>
+
+	</bean>
+
+	<bean id="cat.udl.asic.datacollector.prov8"
+		class="cat.udl.asic.datacollector.impl.component.DBDataSourceServiceImpl"
+		init-method="init" scope="singleton">
+		<property name="sqlService">
+			<ref bean="cat.udl.asic.datacollector.api.SqlService.Service5" />
+		</property>
+	</bean>
+
+	<bean id="cat.udl.asic.datacollector.prov9"
+		class="cat.udl.asic.datacollector.impl.component.DynamicPropertiesDataSourceImpl"
+		scope="singleton">
+		<property name="cache">
+			<ref bean="cat.udl.asic.datacollector.api.DataCollectorService.cache" />
+		</property>
+	</bean>
+
+	<bean id="cat.udl.asic.datacollector.prov10"
+		class="cat.udl.asic.datacollector.impl.component.AuthzDataSourceServiceImpl"
+		scope="singleton">
+
+		<property name="developerHelperService">
+			<ref bean="org.sakaiproject.entitybroker.DeveloperHelperService" />
+		</property>
+	</bean>
+
+	<bean id="cat.udl.asic.datacollector.prov11"
+		class="cat.udl.asic.datacollector.impl.component.SchedulerDataSourceServiceImpl"
+		scope="singleton">
+
+		<property name="developerHelperService">
+			<ref bean="org.sakaiproject.entitybroker.DeveloperHelperService" />
+		</property>
+	</bean>
+
+	<bean id="cat.udl.asic.datacollector.prov13"
+		class="cat.udl.asic.datacollector.impl.component.DBDataSourceServiceImpl"
+		init-method="init" scope="singleton">
+		<property name="sqlService">
+			<ref bean="cat.udl.asic.datacollector.api.SqlService.Service7" />
+		</property>
+	</bean>
+
+	<bean id="cat.udl.asic.datacollector.prov14"
+		class="cat.udl.asic.datacollector.impl.component.EventDBDataSourceServiceImpl"
+		init-method="init" scope="singleton">
+		<property name="sqlService">
+			<ref bean="cat.udl.asic.datacollector.api.SqlService.Service6" />
+		</property>
+	</bean>
+
+	<bean id="cat.udl.asic.datacollector.prov15"
+		class="cat.udl.asic.datacollector.impl.component.DBDataSourceServiceImpl"
+		init-method="init" scope="singleton">
+		<property name="sqlService">
+			<ref bean="cat.udl.asic.datacollector.api.SqlService.Service6" />
+		</property>
+	</bean>
+
+	<bean id="cat.udl.asic.datacollector.prov16"
+		class="cat.udl.asic.datacollector.impl.component.DBDataSourceServiceImpl"
+		init-method="init" scope="singleton">
+		<property name="sqlService">
+			<ref bean="cat.udl.asic.datacollector.api.SqlService.Service8" />
+		</property>
+	</bean>
+
+	<bean id="cat.udl.asic.datacollector.prov17"
+		class="cat.udl.asic.datacollector.impl.component.DBDataSourceServiceImpl"
+		init-method="init" scope="singleton">
+		<property name="sqlService">
+			<ref bean="cat.udl.asic.datacollector.api.SqlService.Service9" />
+		</property>
+	</bean>
+
+	<bean id="cat.udl.asic.datacollector.prov18"
+		class="cat.udl.asic.datacollector.impl.component.EventDBDataSourceServiceImpl"
+		init-method="init" scope="singleton">
+		<property name="sqlService">
+			<ref bean="cat.udl.asic.datacollector.api.SqlService.Service9" />
+		</property>
+	</bean>
+
+	<bean id="cat.udl.asic.datacollector.prov19"
+		class="cat.udl.asic.datacollector.impl.component.EventDBDataSourceServiceImpl"
+		init-method="init" scope="singleton">
+		<property name="sqlService">
+			<ref bean="cat.udl.asic.datacollector.api.SqlService.Service10" />
+		</property>
+	</bean>
+
+	<bean id="cat.udl.asic.datacollector.prov20"
+		class="cat.udl.asic.datacollector.impl.component.EventDBDataSourceServiceImpl"
+		init-method="init" scope="singleton">
+		<property name="sqlService">
+			<ref bean="cat.udl.asic.datacollector.api.SqlService.Service7" />
+		</property>
+	</bean>
+
+	<bean id="cat.udl.asic.datacollector.prov21"
+		class="cat.udl.asic.datacollector.impl.component.EventLdapDBDataSourceServcieImpl"
+		init-method="init" scope="singleton">
+		<property name="userName" value="" />
+		<property name="password" value="" />
+		<property name="url" value="" />
+		<property name="sqlService">
+			<ref bean="cat.udl.asic.datacollector.api.SqlService.Service11" />
+		</property>
+	</bean>
+	<bean id="cat.udl.asic.datacollector.prov22" 
+		class="cat.udl.asic.datacollector.impl.component.EventDBDataSourceServiceImpl"
+		init-method="init" scope="singleton">
+		<property name="sqlService">
+			<ref bean="cat.udl.asic.datacollector.api.SqlService.Service12" />
+		</property>
+	</bean>
+
+	<bean id="cat.udl.asic.datacollector.prov23"
+		class="cat.udl.asic.datacollector.impl.component.DBDataSourceServiceImpl"
+		init-method="init" scope="singleton">
+		<property name="sqlService">
+			<ref bean="cat.udl.asic.datacollector.api.SqlService.Service12" />
+		</property>
+	</bean>
+	
+	<bean id="cat.udl.asic.datacollector.prov24" 
+		class="cat.udl.asic.datacollector.impl.component.EventDBDataSourceServiceImpl"
+		init-method="init" scope="singleton">
+		<property name="sqlService">
+			<ref bean="cat.udl.asic.datacollector.api.SqlService.Service14" />
+		</property>
+	</bean>
+	
+
+	<!-- Memory cache for user lookup. -->
+
+	<bean id="cat.udl.asic.datacollector.api.DataCollectorService.cache"
+		class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+		<property name="cacheManager">
+			<ref bean="org.sakaiproject.memory.api.MemoryService.cacheManager" />
+		</property>
+		<property name="cacheName">
+			<value>cat.udl.asic.datacollector.api.DataCollectorService</value>
+		</property>
+		<property name="maxElementsInMemory" value="100000" />
+		<property name="diskPersistent" value="false" />
+		<property name="eternal" value="false" />
+		<property name="timeToLive" value="7200" />
+		<property name="timeToIdle" value="7200" />
+	</bean>
+
+	<bean id="cat.udl.asic.datacollector.api.service.InitializeService"
+		class="cat.udl.asic.datacollector.impl.component.UdLSiteUserInitializeImpl">
+		<!-- <property name="currentAny" value="2008-09" /> -->
+		<property name="cache">
+			<ref bean="cat.udl.asic.datacollector.api.DataCollectorService.cache" />
+		</property>
+	</bean>
+
+
+	<bean id="cat.udl.asic.datacollector.api.SqlService.Service1"
+		parent="cat.udl.asic.datacollector.api.SqlService.Service">
+		<property name="defaultDataSource">
+			<ref bean="cat.udl.asic.api.datacollector.DbDataSource1" />
+		</property>
+		<!-- <property name="longDataSource">
+			<ref bean="cat.udl.asic.api.datacollector.DbDataSource1" />
+		</property>-->
+	</bean>
+
+	<bean id="cat.udl.asic.datacollector.api.SqlService.Service2"
+		parent="cat.udl.asic.datacollector.api.SqlService.Service">
+		<property name="defaultDataSource">
+			<ref bean="cat.udl.asic.api.datacollector.DbDataSource2" />
+		</property>
+		<!-- <property name="longDataSource">
+			<ref bean="cat.udl.asic.api.datacollector.DbDataSource2" />
+		</property> -->
+	</bean>
+
+
+	<bean id="cat.udl.asic.datacollector.api.SqlService.Service5"
+		parent="cat.udl.asic.datacollector.api.SqlService.Service">
+		<property name="defaultDataSource">
+			<ref bean="cat.udl.asic.api.datacollector.DbDataSource5" />
+		</property>
+		<!-- <property name="longDataSource">
+			<ref bean="cat.udl.asic.api.datacollector.DbDataSource5" />
+		</property> -->
+	</bean>
+
+	<bean id="cat.udl.asic.datacollector.api.SqlService.Service6"
+		parent="cat.udl.asic.datacollector.api.SqlService.Service">
+		<property name="defaultDataSource">
+			<ref bean="cat.udl.asic.api.datacollector.DbDataSource6" />
+		</property>
+		<!-- <property name="longDataSource">
+			<ref bean="cat.udl.asic.api.datacollector.DbDataSource6" />
+		</property> -->
+	</bean>
+
+	<bean id="cat.udl.asic.datacollector.api.SqlService.Service7"
+		parent="cat.udl.asic.datacollector.api.SqlService.Service">
+		<property name="defaultDataSource">
+			<ref bean="cat.udl.asic.api.datacollector.DbDataSource7" />
+		</property>
+		<!-- <property name="longDataSource">
+			<ref bean="cat.udl.asic.api.datacollector.DbDataSource7" />
+		</property> -->
+	</bean>
+	<bean id="cat.udl.asic.datacollector.api.SqlService.Service8"
+		parent="cat.udl.asic.datacollector.api.SqlService.Service">
+		<property name="defaultDataSource">
+			<ref bean="cat.udl.asic.api.datacollector.DbDataSource8" />
+		</property>
+		<!-- <property name="longDataSource">
+			<ref bean="cat.udl.asic.api.datacollector.DbDataSource8" />
+		</property> -->
+	</bean>
+	<bean id="cat.udl.asic.datacollector.api.SqlService.Service9"
+		parent="cat.udl.asic.datacollector.api.SqlService.Service">
+		<property name="defaultDataSource">
+			<ref bean="cat.udl.asic.api.datacollector.DbDataSource9" />
+		</property>
+		<!-- <property name="longDataSource">
+			<ref bean="cat.udl.asic.api.datacollector.DbDataSource9" />
+		</property> -->
+	</bean>
+
+	<bean id="cat.udl.asic.datacollector.api.SqlService.Service10"
+		parent="cat.udl.asic.datacollector.api.SqlService.Service">
+		<property name="defaultDataSource">
+			<ref bean="cat.udl.asic.api.datacollector.DbDataSource10" />
+		</property>
+		<!-- <property name="longDataSource">
+			<ref bean="cat.udl.asic.api.datacollector.DbDataSource10" />
+		</property> -->
+	</bean>
+
+	<bean id="cat.udl.asic.datacollector.api.SqlService.Service11"
+		parent="cat.udl.asic.datacollector.api.SqlService.Service">
+		<property name="defaultDataSource">
+			<ref bean="cat.udl.asic.api.datacollector.DbDataSource11" />
+		</property>
+		<!-- <property name="longDataSource">
+			<ref bean="cat.udl.asic.api.datacollector.DbDataSource11" />
+		</property> -->
+	</bean>
+	<bean id="cat.udl.asic.datacollector.api.SqlService.Service12"
+		parent="cat.udl.asic.datacollector.api.SqlService.Service">
+		<property name="defaultDataSource">
+			<ref bean="cat.udl.asic.api.datacollector.DbDataSource12" />
+		</property>
+		<!-- <property name="longDataSource">
+			<ref bean="cat.udl.asic.api.datacollector.DbDataSource12" />
+		</property> -->
+	</bean> 
+	
+	<bean id="cat.udl.asic.datacollector.api.SqlService.Service14"
+parent="cat.udl.asic.datacollector.api.SqlService.Service">
+		<property name="defaultDataSource">
+			<ref bean="cat.udl.asic.api.datacollector.DbDataSource14" />
+		</property>
+		<!-- <property name="longDataSource">
+			<ref bean="cat.udl.asic.api.datacollector.DbDataSource14" />
+		</property> -->
+	</bean>
+
+
+	<bean id="cat.udl.asic.api.datacollector.DbDataSource1" parent="datacollector.local.javax.sql.DbBaseDataSource" />
+	<bean id="cat.udl.asic.api.datacollector.DbDataSource2" parent="datacollector.local.javax.sql.DbBaseDataSource" />
+	<bean id="cat.udl.asic.api.datacollector.DbDataSource5" parent="datacollector.local.javax.sql.DbBaseDataSource" />
+	<bean id="cat.udl.asic.api.datacollector.DbDataSource6" parent="datacollector.local.javax.sql.DbBaseDataSource" />
+	<bean id="cat.udl.asic.api.datacollector.DbDataSource7" parent="datacollector.local.javax.sql.DbBaseDataSource" />
+	<bean id="cat.udl.asic.api.datacollector.DbDataSource8" parent="datacollector.local.javax.sql.DbBaseDataSource" />
+	<bean id="cat.udl.asic.api.datacollector.DbDataSource9" parent="datacollector.local.javax.sql.DbBaseDataSource" />
+	<bean id="cat.udl.asic.api.datacollector.DbDataSource10" parent="datacollector.local.javax.sql.DbBaseDataSource" />
+	<bean id="cat.udl.asic.api.datacollector.DbDataSource11" parent="datacollector.local.javax.sql.DbBaseDataSource" />
+ 	<bean id="cat.udl.asic.api.datacollector.DbDataSource12" parent="datacollector.local.javax.sql.DbBaseDataSource" /> 
+ 	<bean id="cat.udl.asic.api.datacollector.DbDataSource14" parent="datacollector.local.javax.sql.DbBaseDataSource" />
+
+	<!-- Shared DataSource for all pooled database connections -->
+	<bean id="cat.udl.asic.api.datacollector.DbDataSource" parent="datacollector.local.javax.sql.DbBaseDataSource">
+	</bean>
+
+	<!-- The "slow" connection pool for streaming downloads from db -->
+
+	<bean id="datacollector.local.javax.sql.DefaultDataSource" parent="datacollector.local.javax.sql.DbBaseDataSource"></bean>
+
+
+	<bean id="cat.udl.asic.BasicSqlServiceSqlMySql" class="org.sakaiproject.db.impl.BasicSqlServiceSqlMySql"
+		scope="singleton" />
+
+	<bean id="cat.udl.asic.BasicSqlServiceSqlOracle" class="org.sakaiproject.db.impl.BasicSqlServiceSqlOracle"
+		scope="singleton" />
+
+	<bean id="cat.udl.asic.BasicSqlServiceSqlDefault" class="org.sakaiproject.db.impl.BasicSqlServiceSqlDefault"
+		scope="singleton" />
+
+
+	<!-- Shared parent configuration -->
+	<bean id="cat.udl.asic.datacollector.api.SqlService.Service"
+		class="org.sakaiproject.db.impl.BasicSqlService" init-method="init"
+		destroy-method="destroy" scope="singleton">
+
+		<lookup-method name="usageSessionService"
+			bean="org.sakaiproject.event.api.UsageSessionService" />
+		<lookup-method name="threadLocalManager"
+			bean="org.sakaiproject.thread_local.api.ThreadLocalManager" />
+
+		<property name="defaultDataSource">
+			<ref bean="datacollector.local.javax.sql.DefaultDataSource" />
+		</property>
+
+		<!-- <property name="longDataSource">
+			<ref bean="datacollector.local.javax.sql.LongDataSource" />
+		</property>-->
+
+		<property name="autoDdl">
+			<value>false</value>
+		</property>
+
+		<property name="commitAfterRead">
+			<value>true</value>
+		</property>
+
+		<!-- HSQLDB configuration -->
+		<property name="vendor">
+			<value>mysql</value>
+		</property>
+
+
+		<property name="databaseBeans">
+			<map>
+				<entry key="default">
+					<ref bean="cat.udl.asic.BasicSqlServiceSqlDefault" />
+				</entry>
+				<entry key="mysql">
+					<ref bean="cat.udl.asic.BasicSqlServiceSqlMySql" />
+				</entry>
+				<entry key="oracle">
+					<ref bean="cat.udl.asic.BasicSqlServiceSqlOracle" />
+				</entry>
+			</map>
+		</property>
+
+	</bean>
+
+
+	<!--Shared for all the service -->
+
+	<bean id="datacollector.local.javax.sql.DbBaseDataSource"
+		abstract="true" class="org.apache.commons.dbcp.SakaiBasicDataSource"
+		destroy-method="close">
+
+		<!-- The fully qualified Java class name of the JDBC driver to be used. -->
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+
+		<!-- The connection URL to be passed to our JDBC driver to establish a 
+			connection. -->
+		<property name="url">
+			<value>jdbc:mysql://localhost/employees</value>
+		</property>
+
+		<!-- The connection username to be passed to our JDBC driver to establish 
+			a connection. -->
+		<property name="username">
+			<value>demo</value>
+		</property>
+
+		<!-- The connection password to be passed to our JDBC driver to establish 
+			a connection. -->
+		<property name="password">
+			<value>test</value>
+		</property>
+
+		<!-- The initial number of connections that are created when the pool is 
+			started. -->
+		<property name="initialSize">
+			<value>5</value>
+		</property>
+
+		<!-- The maximum number of active connections that can be allocated from 
+			this pool at the same time, or zero for no limit. -->
+		<property name="maxActive">
+			<value>50</value>
+		</property>
+
+		<!-- The maximum number of active connections that can remain idle in the 
+			pool, without extra ones being released, or zero for no limit. -->
+		<property name="maxIdle">
+			<value>5</value>
+		</property>
+
+		<!-- The minimum number of active connections that can remain idle in the 
+			pool, without extra ones being created, or 0 to create none. -->
+		<property name="minIdle">
+			<value>5</value>
+		</property>
+
+		<!-- The maximum number of milliseconds that the pool will wait (when there 
+			are no available connections) for a connection to be returned before throwing 
+			an exception, or -1 to wait indefinitely. -->
+		<property name="maxWait">
+			<value>300000</value>
+		</property>
+
+		<!-- The number of objects to examine during each run of the idle object 
+			evictor thread (if any). -->
+		<property name="numTestsPerEvictionRun">
+			<value>3</value>
+		</property>
+
+		<!-- The indication of whether objects will be validated before being borrowed 
+			from the pool. If the object fails to validate, it will be dropped from the 
+			pool, and we will attempt to borrow another. Note: this has been shown to 
+			cause performance problems with Oracle (leave it false) -->
+		<property name="testOnBorrow">
+			<value>false</value>
+		</property>
+
+		<!-- The indication of whether objects will be validated before being returned 
+			to the pool. -->
+		<property name="testOnReturn">
+			<value>false</value>
+		</property>
+
+		<!-- The indication of whether objects will be validated by the idle object 
+			evictor (if any). If an object fails to validate, it will be dropped from 
+			the pool. -->
+		<property name="testWhileIdle">
+			<value>false</value>
+		</property>
+
+		<!-- The SQL query that will be used to validate connections from this 
+			pool before returning them to the caller. If specified, this query MUST be 
+			a SQL SELECT statement that returns at least one row. Note: This has been 
+			shown to cause performance problems under Oracle: leave it unset. -->
+		<!-- <property name="validationQuery"/> <value>select 1 from INFORMATION_SCHEMA.SYSTEM_USERS</value> 
+			</property> -->
+
+		<!-- The default auto-commit state of connections created by this pool. -->
+		<property name="defaultAutoCommit">
+			<value>true</value>
+		</property>
+
+		<!-- The default read-only state of connections created by this pool. -->
+		<property name="defaultReadOnly">
+			<value>false</value>
+		</property>
+
+		<!-- Use TRANSACTION_READ_COMMITTED for MySQL -->
+		<!-- DO NOT SET for Oracle (the default TRANSACTION_READ_COMMITTED is fine, 
+			and setting it causes performance problems) -->
+		<!-- Up to and including 1.7.1, HSQLDB supports only Connection.TRANSACTION_READ_UNCOMMITTED. -->
+		<!-- <property name="defaultTransactionIsolationString"> <value>TRANSACTION_READ_UNCOMMITTED</value> 
+			</property> -->
+
+		<!-- Prepared statement pooling for this pool. -->
+		<property name="poolPreparedStatements">
+			<value>false</value>
+		</property>
+
+		<!-- The maximum number of open statements that can be allocated from the 
+			statement pool at the same time, or zero for no limit. Since a connection 
+			usually only uses one or two statements at a time, this is mostly used to 
+			help detect resource leaks. -->
+		<property name="maxOpenPreparedStatements">
+			<value>0</value>
+		</property>
+
+		<!-- The minimum amount of time an object may sit idle in the pool before 
+			it is eligable for eviction by the idle object evictor (if any). -->
+		<property name="minEvictableIdleTimeMillis">
+			<value>1800000</value>
+		</property>
+
+		<!-- The number of milliseconds to sleep between runs of the idle object 
+			evictor thread. When non-positive, no idle object evictor thread will be 
+			run. -->
+		<property name="timeBetweenEvictionRunsMillis">
+			<value>900000</value>
+		</property>
+
+	</bean>
+
+
+</beans>

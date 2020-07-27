@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<name>Sakai Datacollector Package</name>
+	<groupId>cat.udl.asic.datacollector</groupId>
+	<artifactId>datacollector-component</artifactId>
+
+	<organization>
+		<name>Universitat de Lleida</name>
+		<url>http://www.udl.cat</url>
+	</organization>
+	<inceptionYear>2010</inceptionYear>
+	<description>Package deployment</description>
+	<packaging>sakai-component</packaging>
+
+	<properties>
+		<deploy.target>components</deploy.target>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>proasic</id>
+			<name>UdL local repository</name>
+			<layout>default</layout>
+			<url>http://proasic.udl.cat/m2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<!-- the base is parent -->
+	<parent>
+		<groupId>cat.udl.asic</groupId>
+		<artifactId>datacollector</artifactId>
+		<version>1.10-SNAPSHOT</version>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>cat.udl.asic.datacollector</groupId>
+			<artifactId>datacollector-impl</artifactId>
+		</dependency>
+
+		<dependency><!-- That is an irregular way to grant access to DB implementation 
+				classes :-( -->
+			<artifactId>sakai-kernel-impl</artifactId>
+			<groupId>org.sakaiproject.kernel</groupId>
+			<version>${sakai.version}</version>
+		</dependency>
+
+		<dependency>
+			<!-- Afegin aquí la dependencia del driver ldap 
+				per no ficar-ho al commons i tenir problemes 
+				amb el provider ldap -->
+			<groupId>com.novell.ldap</groupId>
+			<artifactId>jldap</artifactId>
+			<version>2009.10.07</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.octetstring</groupId>
+			<artifactId>jdbcLdapUdL</artifactId>
+			<version>1.1</version>
+		</dependency>
+		
+	</dependencies>
+
+
+
+</project>

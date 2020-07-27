@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<style type="text/css">
+  
+      .link {
+        color: blue;
+		cursor:pointer;
+      }
+
+      .linkRun {
+        color: blue;
+		cursor:pointer;
+      }
+    
+</style>
+
+<!--  Llibreries javascript -->
+<link type="text/css" href="./javascript/jquery_ui/css/custom-theme/jquery-ui-1.7.2.custom.css" rel="stylesheet" />
+<script src ="./javascript/jquery-1.3.2.min.js" type="text/javascript" ></script>
+<script src="./javascript/jquery_ui/js/jquery-ui-1.7.2.custom.min.js" type="text/javascript" ></script>
+
+<!--  Plugin to convert javascript objects to JSON format -->
+<script src="javascript/jquery.json-2.2.min.js" type="text/javascript" ></script>
+
+<script src="./javascript/test.js" type="text/javascript" ></script>
+<script>
+	$(document).ready(function(){
+		$("#reset").click(function(){
+			$('.resultat,.status').empty();
+		});
+		
+		$("#run").click(function(){
+			runTest();
+			$("span").each(function(){
+				if($(this).text() == "OK")
+					$(this).css('color','green');
+				if($(this).text()=="FAILED")
+					$(this).css('color','red');
+			});
+		});
+
+		$(".link").click(function(){
+			$(this).next().toggle();
+		});
+	});
+</script>
+
+<title>Test del servei dataCollector</title>
+</head>
+<body>
+	<span>Tests dataCollector: </span><span id="run" class="linkRun"> Run </span><span id="reset" class="linkRun"> Reset</span> 
+	<div id="container">
+	<p>Test 1 - Llista de block-section lectura: <span class="status" id="test1"></span></p>
+	
+	<p>Test 2 - Llista de block-section escriptura: <span class="status" id="test2"></span></p>
+
+	<p>Test 3 - Definició d'una section: <span class="status" id="test3"></span></p>
+	
+	<p>Test 4 - Definició d'una section què no tenim permís: <span class="status" id="test4"></span><br>
+	<span class="link">Valor rebut:</span><span class="resultat" id="test4ErrorCode"></span></p>
+	
+	<p>Test 5 - GET Info d'una section info: <span class="status" id="test5"></span></p>
+	
+	<p>Test 6 - GET Info d'una section info què no tenim permís: <span class="status" id="test6"></span><br>
+	<span class="link">Valor rebut:</span><span class="resultat" id="test6ErrorCode"></span></p>
+	
+	<p>Test 7 - GET DataSource? simple.value existent: <span class="status" id="test7"></span></p>
+	
+	<p>Test 8 - GET DataSource? simple.value inexistent: <span class="status" id="test8"></span><br>
+	<span >Error code rebut:</span> <span class="resultat" id="test8ErrorCode"></span></p>
+	
+	<p>Test 9 - GET DataSource? simple.value que no tenim permís a la section corresponent: <span class="status" id="test9"></span><br>
+	<span >Error code rebut:</span> <span class="resultat" id="test9ErrorCode"></span></p>
+	
+	<p>Test 10 - PUT per inserir un nou valor simple.value(<span class="status" id="test10ObjPosat"></span>): <span class="status" id="test10"></span></p>
+	
+	<p>Test 11 - GET per veure el valor insertat: <span class="status" id="test11"></span><br/>
+	<span class="link">Valor rebut:</span> <span class="resultat" id="test11ObjPosat"></span></p>
+	
+	<p>Test 12 - PUT per inserir un valor(<span class="status" id="test12ObjPosat"></span>) a un datasource d'una section (sec-forbidden) que no tenim permís: <span class="status" id="test12"></span><br>
+	<span >Error code rebut:</span> <span class="resultat" id="test12ErrorCode"></span></p>
+	
+	<p>Test 13 - PUT per inserir un valor(<span class="status" id="test13ObjPosat"></span>) a un datasource (horesNoUpdatable) que té el camp updatable a false: <span class="status" id="test13"></span><br>
+	<span >Error code rebut:</span> <span class="resultat" id="test13ErrorCode"></span></p>
+	
+	<p>Test 14 - PUT per modificar el valor anterior(<span class="status" id="test14ObjPosat"></span>): <span class="status" id="test14"></span></p>
+	
+	<p>Test 15 - GET per comprovar els canvis: <span class="status" id="test15"></span><br>
+	<span class="link">Valor rebut:</span> <span class="resultat" id="test15ObjPosat"></span></p>
+	
+	<p>Test 16 - DELETE simple.value del valor inserit: <span class="status" id="test16"></span></p>
+	
+	<p>Test 17 - GET comprovar que no existeix: <span class="status" id="test17"></span><br>
+	<span class="link">Valor rebut:</span> <span class="resultat" id="test17ObjPosat"></span></p>
+	
+	<p>Test 18 - DELETE simple.value a un datasource que té el camp updatable a false: <span class="status" id="test18"></span><br>
+	<span >Error code rebut:</span> <span class="resultat" id="test18ErrorCode"></span></p>
+	
+	<p>Test 19 - GET DataSource? collection.value existent: <span class="status" id="test19"></span><br>
+	<span class="link">Valor rebut:</span> <span class="resultat" id="test19ObjPosat"></span></p>
+	
+	<p>Test 20 - GET DataSource? collection.value inexistent: <span class="status" id="test20"></span><br>
+	<span >Error code rebut:</span> <span class="resultat" id="test20ErrorCode"></span></p>
+	
+	<p>Test 21 - GET DataSource? collection.value que no tenim permís a la section corresponent: <span class="status" id="test21"></span><br>
+	<span class="link">Valor rebut:</span> <span class="resultat" id="test21ErrorCode"></span></p>
+	
+	<p>Test 22 - PUT per inserir nova fila (<span class="status" id="test22ObjPosat"></span>) a collection.value: <span class="status" id="test22"></span><br>
+	<span class="link">Valor rebut:</span> <span class="resultat" id="test22ErrorCode"></span></p>
+	
+	<p>Test 22-1 - PUT per insertar nova fila  (<span class="status" id="test22-1ObjPosat"></span>) a collection.value amb id concret: 354 a collection.value: <span class="status" id="test22-1"></span><br>
+	<span class="link">Valor rebut:</span> <span class="resultat" id="test22-1ErrorCode"></span></p>
+	
+	<p>Test 23 - GET per veure el valor insertat: <span class="status" id="test23"></span><br>
+	<span class="link">Valor rebut:</span> <span class="resultat" id="test23ObjPosat"></span></p>
+	
+	<p>Test 24 - PUT per inserir una nova fila (<span class="status" id="test24ObjPosat"></span>) a un datasource d'una section que no tenim permís: <span class="status" id="test24"></span><br>
+	<span class="link">Valor rebut:</span> <span class="resultat" id="test24ErrorCode"></span></p>
+	
+	<p>Test 25 - PUT per inserir una nova fila (<span class="status" id="test25ObjPosat"></span>) a un datasource que té el camp updatable a false: <span class="status" id="test25"></span><br>
+	<span class="link">Valor rebut:</span> <span class="resultat" id="test25ErrorCode"></span></p>
+	
+	<p>Test 26 - PUT per modificar (<span class="resultat" id="test26ObjPosat"></span>) la fila anterior: <span class="status" id="test26"></span><br>
+	<span class="link">Valor rebut:</span> <span class="resultat" id="test26ErrorCode"></span></p>
+	
+	<p>Test 27 - GET per comprovar els canvis: <span class="status" id="test27"></span><br>
+	<span class="link">Valor rebut:</span> <span class="resultat" id="test27ObjPosat"></span></p>
+	
+	<p>Test 28 - DELETE de la fila del valor inserit(id 354):<span class="status" id="test28"></span><br>
+	<span class="link">Valor rebut:</span> <span class="resultat" id="test28ErrorCode"></span></p>
+		
+	<p>Test 29 - GET de la fila que no existeix: <span class="status" id="test29"></span><br>
+	<span class="link">Valor rebut:</span> <span class="resultat" id="test29ErrorCode"></span></p>
+	
+	<p>Test 30 - DELETE d'una fila a un datasource que té el camp updatable a false: <span class="status" id="test30"></span><br>
+	<span class="link">Valor rebut:</span> <span class="resultat" id="test30ErrorCode"></span></p>
+	
+	
+	</div>
+</body>
+</html>
