@@ -16,14 +16,15 @@
 	<modules>
 		<!-- 
 		<module>directori</module>
-		<module>helpdesk</module>
-		<module>reports</module>
 		<module>actes</module>
-		<module>enquestes</module>		
-		 -->
+		<module>enquestes</module>	
+                <module>udl-jobs</module> -->
+		
 		<module>cm</module>
 		<module>datacollector</module> 
-		<!-- <module>udl-jobs</module> -->
+                <module>helpdesk</module>
+                <module>reports</module>
+			
 	</modules>    
     
 </project>
