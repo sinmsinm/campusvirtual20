@@ -1,0 +1,602 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE faces-config PUBLIC
+  "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.0//EN"
+  "http://java.sun.com/dtd/web-facesconfig_1_0.dtd">
+<faces-config>
+    <application>
+        <message-bundle>es.udl.asic.sakaiproject.tool.einahelpdesk.Messages</message-bundle>
+        <locale-config>
+            <default-locale>en</default-locale>
+            <supported-locale>de</supported-locale>
+            <supported-locale>fr</supported-locale>
+            <supported-locale>es</supported-locale>
+        </locale-config>
+    </application>
+
+	<!-- =================================================================== -->
+	<!-- =================== Gestio de la navegacio de l'eina ============== -->
+	<!-- =================================================================== -->
+	
+	<!-- === perfil general ================================================ -->
+	<navigation-rule>
+    	<from-view-id>/einahelpdesk/main.jsp</from-view-id>
+    	
+    	<navigation-case>
+            <from-outcome>main</from-outcome>
+            <to-view-id>/einahelpdesk/main.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+    	
+    	<navigation-case>
+      		<from-outcome>alumne</from-outcome>
+      		<to-view-id>/einahelpdesk/alumne.jsp</to-view-id>
+     	</navigation-case>
+  		
+  		<navigation-case>
+      		<from-outcome>pas_pdi</from-outcome>
+      		<to-view-id>/einahelpdesk/pas_pdi/pas_pdi.jsp</to-view-id>
+     	</navigation-case>
+    
+    	<navigation-case>
+      		<from-outcome>support</from-outcome>
+      		<to-view-id>/einahelpdesk/support/support.jsp</to-view-id>
+     	</navigation-case>
+	
+		<navigation-case>
+            <from-outcome>cons_assist_admin</from-outcome>
+            <to-view-id>/support/cons_assist_admin.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+	
+		<navigation-case>
+            <from-outcome>cons_assist_pas_pdi</from-outcome>
+            <to-view-id>/pas_pdi/cons_assist_pas_pdi.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+
+		<navigation-case>
+            <from-outcome>consultar_operador</from-outcome>
+            <to-view-id>/operador/cons_assist_operador.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+
+		
+		<navigation-case>
+            <from-outcome>consultar_responsable</from-outcome>
+            <to-view-id>/responsable/cons_assist_responsable.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>    
+
+		<navigation-case>
+            <from-outcome>consultar_responsable</from-outcome>
+            <to-view-id>/responsable/cons_assist_responsable.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>   
+	
+		<navigation-case>
+            <from-outcome>cons_historic</from-outcome>
+            <to-view-id>/support/cons_historic.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>gestio_tipus</from-outcome>
+            <to-view-id>/support/gestio_tipus.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>gestio_respon</from-outcome>
+            <to-view-id>/support/gestio_respon.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+	<navigation-case>
+            <from-outcome>gestio_respon_campus</from-outcome>
+            <to-view-id>/responsable/gestio_respon_campus.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+
+        <navigation-case>
+            <from-outcome>preg_frequents</from-outcome>
+            <to-view-id>/support/preg_frequents.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>preg_frequents_pas_pdi</from-outcome>
+            <to-view-id>/pas_pdi/preg_frequents.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>preg_frequents_opera</from-outcome>
+            <to-view-id>/operador/preg_frequents.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>preg_frequents_respo</from-outcome>
+            <to-view-id>/responsable/preg_frequents.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>crea_operador</from-outcome>
+            <to-view-id>/support/gest_operadors.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+	
+		<navigation-case>
+            <from-outcome>err</from-outcome>
+            <to-view-id>/einahelpdesk/err.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>nova_assist</from-outcome>
+            <to-view-id>/einahelpdesk/nova_assist.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>    
+		
+		<navigation-case>
+            <from-outcome>ok</from-outcome>
+            <to-view-id>/einahelpdesk/ok.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+	</navigation-rule>
+
+	<!-- ============================================= -->
+	<navigation-rule>
+    	<from-view-id>/einahelpdesk/err.jsp</from-view-id>
+    	
+    	<navigation-case>
+            <from-outcome>main</from-outcome>
+            <to-view-id>/einahelpdesk/main.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!-- ============================================= -->
+    <!-- necessari per a nova_assist.jsp, perfil suport-->
+    <!--i per al perfil operador, responsable i pas/pdi-->
+    <!-- ============================================= -->
+    <navigation-rule>
+    	<from-view-id>/einahelpdesk/nova_assist.jsp</from-view-id>
+    	 <navigation-case>
+            <from-outcome>nova_assist</from-outcome>
+            <to-view-id>/einahelpdesk/nova_assist.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>    
+    	 <navigation-case>
+            <from-outcome>cons_assist_admin</from-outcome>
+            <to-view-id>/support/cons_assist_admin.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultar_operador</from-outcome>
+            <to-view-id>/operador/cons_assist_operador.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultar_responsable</from-outcome>
+            <to-view-id>/responsable/cons_assist_responsable.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>  
+        <navigation-case>
+            <from-outcome>cons_assist_pas_pdi</from-outcome>
+            <to-view-id>/pas_pdi/cons_assist_pas_pdi.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>cons_historic</from-outcome>
+            <to-view-id>/support/cons_historic.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>gestio_tipus</from-outcome>
+            <to-view-id>/support/gestio_tipus.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>gestio_respon</from-outcome>
+            <to-view-id>/support/gestio_respon.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>gestio_respon_campus</from-outcome>
+            <to-view-id>/responsable/gestio_respon_campus.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+	<navigation-case>
+            <from-outcome>crea_operador</from-outcome>
+            <to-view-id>/support/gest_operadors.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+    	<navigation-case>
+            <from-outcome>preg_frequents</from-outcome>
+            <to-view-id>/support/preg_frequents.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>preg_frequents_opera</from-outcome>
+            <to-view-id>/operador/preg_frequents.jsp</to-view-id>
+            <redirect/>
+    	</navigation-case>
+    	<navigation-case>
+            <from-outcome>preg_frequents_respo</from-outcome>
+            <to-view-id>/responsable/preg_frequents.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>preg_frequents_pas_pdi</from-outcome>
+            <to-view-id>/pas_pdi/preg_frequents.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>ok</from-outcome>
+            <to-view-id>/einahelpdesk/ok.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>principi</from-outcome>
+            <to-view-id>/einahelpdesk/main.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>  
+        <navigation-case>
+            <from-outcome>err_nova_assistencia</from-outcome>
+            <to-view-id>/einahelpdesk/error.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+    	<from-view-id>/einahelpdesk/error.jsp</from-view-id>
+    	<navigation-case>
+            <from-outcome>principi</from-outcome>
+            <to-view-id>/einahelpdesk/main.jsp</to-view-id>
+            <redirect/>
+        </navigation-case> 
+     </navigation-rule>
+     <navigation-rule>
+    	<from-view-id>/einahelpdesk/ok.jsp</from-view-id>
+    	<navigation-case>
+            <from-outcome>principi</from-outcome>
+            <to-view-id>/einahelpdesk/main.jsp</to-view-id>
+            <redirect/>
+        </navigation-case> 
+     </navigation-rule>
+     
+        
+	<!-- === perfil Administrador ========================================== -->
+	<navigation-rule>
+        <from-view-id>/einahelpdesk/support/*</from-view-id>
+        
+        <navigation-case>
+            <from-outcome>main</from-outcome>
+            <to-view-id>/support/main.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>cons_assist_admin</from-outcome>
+            <to-view-id>/support/cons_assist_admin.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>cons_historic</from-outcome>
+            <to-view-id>/support/cons_historic.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>gestio_tipus</from-outcome>
+            <to-view-id>/support/gestio_tipus.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>assist_historic</from-outcome>
+            <to-view-id>/support/assist_historic.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>assist_admin</from-outcome>
+            <to-view-id>/support/assist_admin.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>gestio_respon</from-outcome>
+            <to-view-id>/support/gestio_respon.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>crea_operador</from-outcome>
+            <to-view-id>/support/gest_operadors.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>preg_frequents</from-outcome>
+            <to-view-id>/support/preg_frequents.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>err</from-outcome>
+            <to-view-id>/einahelpdesk/err.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>ok</from-outcome>
+            <to-view-id>/einahelpdesk/ok.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>err_nova_assistencia</from-outcome>
+            <to-view-id>/einahelpdesk/error.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>nova_assist</from-outcome>
+            <to-view-id>/einahelpdesk/nova_assist.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>  
+        
+        <navigation-case>
+            <from-outcome>principi</from-outcome>
+            <to-view-id>/einahelpdesk/main.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>  
+                  
+    </navigation-rule>
+    
+	
+	<!-- === perfil Responsable ============================================ -->
+	<navigation-rule>
+        <from-view-id>/einahelpdesk/responsable/*</from-view-id>
+        
+        <navigation-case>
+            <from-outcome>main</from-outcome>
+            <to-view-id>/responsable/main.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+	<navigation-case>
+            <from-outcome>nova_assist</from-outcome>
+            <to-view-id>/einahelpdesk/nova_assist.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>  
+        
+        <navigation-case>
+            <from-outcome>consultar_responsable</from-outcome>
+            <to-view-id>/responsable/cons_assist_responsable.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+
+	<navigation-case>
+            <from-outcome>assist_responsable</from-outcome>
+            <to-view-id>/responsable/assist_responsable.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+		
+	<navigation-case>
+            <from-outcome>assist_historic</from-outcome>
+            <to-view-id>/responsable/assist_historic.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+
+	<navigation-case>
+            <from-outcome>gestio_respon_campus</from-outcome>
+            <to-view-id>/responsable/gestio_respon_campus.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+                   
+        <navigation-case>
+            <from-outcome>preg_frequents_respo</from-outcome>
+            <to-view-id>/responsable/preg_frequents.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>err</from-outcome>
+            <to-view-id>/einahelpdesk/err.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+	
+	<navigation-case>
+            <from-outcome>pantalla_sortir</from-outcome>
+            <to-view-id>/responsable/pantalla_sortir.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+
+                  
+    </navigation-rule>
+    	
+    	
+	<!-- === perfil Operador =============================================== -->
+	<navigation-rule>
+        <from-view-id>/einahelpdesk/operador/*</from-view-id>
+    	<navigation-case>
+            <from-outcome>preg_frequents_opera</from-outcome>
+            <to-view-id>/operador/preg_frequents.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>nova_assist</from-outcome>
+            <to-view-id>/einahelpdesk/nova_assist.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>  
+		<navigation-case>
+            <from-outcome>consultar_operador</from-outcome>
+            <to-view-id>/operador/cons_assist_operador.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+
+	     <navigation-case>
+            <from-outcome>assist_operador</from-outcome>
+            <to-view-id>/operador/assist_operador.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+		
+		<navigation-case>
+            <from-outcome>assist_historic</from-outcome>
+            <to-view-id>/operador/assist_historic.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+  		<navigation-case>
+            <from-outcome>err</from-outcome>
+            <to-view-id>/einahelpdesk/err.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+ 	</navigation-rule>
+ 	
+ 	
+	<!-- === perfil Usuari PAS/PDI ========================================= -->
+	<navigation-rule>
+        <from-view-id>/einahelpdesk/pas_pdi/*</from-view-id>
+		
+		<navigation-case>
+            <from-outcome>nova_assist</from-outcome>
+            <to-view-id>/einahelpdesk/nova_assist.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>     
+
+        <navigation-case>
+            <from-outcome>principi</from-outcome>
+            <to-view-id>/einahelpdesk/main.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>  
+        
+        <navigation-case>
+            <from-outcome>ok</from-outcome>
+            <to-view-id>/pas_pdi/ok.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>err</from-outcome>
+            <to-view-id>/einahelpdesk/err.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+                     
+        <navigation-case>
+            <from-outcome>preg_frequents_pas_pdi</from-outcome>
+            <to-view-id>/pas_pdi/preg_frequents.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>  
+                    
+		<navigation-case>
+            <from-outcome>cons_assist_pas_pdi</from-outcome>
+            <to-view-id>/pas_pdi/cons_assist_pas_pdi.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>   
+        
+        <navigation-case>
+            <from-outcome>assist_pas_pdi</from-outcome>
+            <to-view-id>/pas_pdi/assist_pas_pdi.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>                      
+                     
+		<navigation-case>
+            <from-outcome>err_pas_pdi</from-outcome>
+            <to-view-id>/pas_pdi/err_pas_pdi.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>     
+	 </navigation-rule>
+    
+    
+    <!-- =================== Tool Beans ============== -->
+    <managed-bean>
+        <description>Eina HelpDesk</description>
+        <managed-bean-name>HDesk</managed-bean-name>
+        <managed-bean-class>es.udl.asic.sakaiproject.tool.einahelpdesk.HDesk</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+           		 <description>Service Dependency: HDeskService</description>
+           		 <property-name>hdeskservice</property-name>
+           		 <value>#{Components["es.udl.asic.sakaiproject.service.einahelpdesk.HDeskService"]}</value>
+      	</managed-property>
+ 
+    </managed-bean>
+ 	
+ 	<managed-bean>
+        <description>Eina HelpDesk perfil PAS/PDI</description>
+        <managed-bean-name>HDesk_pas_pdi</managed-bean-name>
+        <managed-bean-class>es.udl.asic.sakaiproject.tool.einahelpdesk.HDesk_pas_pdi</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+           		 <description>Service Dependency: HDeskService</description>
+           		 <property-name>hdeskservice</property-name>
+           		 <value>#{Components["es.udl.asic.sakaiproject.service.einahelpdesk.HDeskService"]}</value>
+      	</managed-property>
+	</managed-bean>
+	<managed-bean>
+        <description>Eina HelpDesk perfil Responsable</description>
+        <managed-bean-name>HDesk_responsable</managed-bean-name>
+        <managed-bean-class>es.udl.asic.sakaiproject.tool.einahelpdesk.HDesk_responsable</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+           		 <description>Service Dependency: HDeskService</description>
+           		 <property-name>hdeskservice</property-name>
+           		 <value>#{Components["es.udl.asic.sakaiproject.service.einahelpdesk.HDeskService"]}</value>
+      	</managed-property>
+	</managed-bean>
+
+	<managed-bean>
+        <description>Eina HelpDesk perfil Support</description>
+        <managed-bean-name>HDesk_support</managed-bean-name>
+        <managed-bean-class>es.udl.asic.sakaiproject.tool.einahelpdesk.HDesk_support</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+           		 <description>Service Dependency: HDeskService</description>
+           		 <property-name>hdeskservice</property-name>
+           		 <value>#{Components["es.udl.asic.sakaiproject.service.einahelpdesk.HDeskService"]}</value>
+      	</managed-property>
+	</managed-bean>
+	
+	<managed-bean>
+        <description>Eina HelpDesk perfil Operador</description>
+        <managed-bean-name>HDesk_operador</managed-bean-name>
+        <managed-bean-class>es.udl.asic.sakaiproject.tool.einahelpdesk.HDesk_operador</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+           		 <description>Service Dependency: HDeskService</description>
+           		 <property-name>hdeskservice</property-name>
+           		 <value>#{Components["es.udl.asic.sakaiproject.service.einahelpdesk.HDeskService"]}</value>
+      	</managed-property>
+	</managed-bean>
+
+<!--
+ 	<managed-bean>
+        <description>Assistencia</description>
+        <managed-bean-name>Assistencia</managed-bean-name>
+        <managed-bean-class>es.udl.asic.sakaiproject.tool.einahelpdesk.Assistencia</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>-->
+        		<!-- a service dependency property - for the ProfileService -->
+              	<!-- a service dependency property - for the Logger 
+        		<managed-property>
+            	<description>Service Dependency: HDeskService</description>
+            	<property-name>hdeskservice</property-name>
+            	<value>#{Components["es.udl.asic.sakaiproject.service.einahelpdesk.HDeskService"]}</value>
+        		</managed-property>
+        		-->
+    <!--</managed-bean>-->
+<!--
+ 	<managed-bean>
+        <description>hibernatebd</description>
+        <managed-bean-name>hibernatebd</managed-bean-name>
+        <managed-bean-class>es.udl.asic.sakaiproject.tool.einahelpdesk.hibernate.HibernateBD</managed-bean-class>
+        <managed-bean-scope> session </managed-bean-scope>
+     	
+	</managed-bean>	
+-->
+ </faces-config>

@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<artifactId>sakai-hdesk</artifactId>
+		<groupId>cat.udl.asic.hdesk</groupId>
+		<version>1.3-SNAPSHOT</version>
+	</parent>
+
+	<name>Implementació del servei de consulta del helpDesk</name>
+	<groupId>cat.udl.asic.hdesk</groupId>
+	<artifactId>sakai-hdesk-impl</artifactId>
+
+	<organization>
+		<name>Universitat de Lleida</name>
+		<url>http://www.udl.cat/</url>
+	</organization>
+	<inceptionYear>2008</inceptionYear>
+	<packaging>jar</packaging>
+	
+	<dependencies>
+
+		<dependency>
+			<groupId>${sakai.spring.groupId}</groupId>
+			<artifactId>${sakai.spring.artifactId}</artifactId>
+			<version>${sakai.spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>${sakai.hibernate.groupId}</groupId>
+			<artifactId>${sakai.hibernate.artifactId}</artifactId>
+			<version>${sakai.hibernate.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>cat.udl.asic.hdesk</groupId>
+			<artifactId>sakai-hdesk-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.sakaiproject.kernel</groupId>
+			<artifactId>sakai-kernel-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+
+	</dependencies>
+</project>

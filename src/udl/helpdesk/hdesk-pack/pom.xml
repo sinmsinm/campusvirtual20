@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>sakai-hdesk</artifactId>
+		<groupId>cat.udl.asic.hdesk</groupId>
+		<version>1.3-SNAPSHOT</version>
+	</parent>
+
+	<name>Empaquetat de actes</name>
+	<groupId>cat.udl.asic.hdesk</groupId>
+	<artifactId>sakai-hdesk-pack</artifactId>
+
+	<organization>
+		<name>Universitat de Lleida</name>
+		<url>http://www.udl.cat/</url>
+	</organization>
+
+	<inceptionYear>2008</inceptionYear>
+	<packaging>sakai-component</packaging>
+	
+	<properties>
+		<deploy.target>components</deploy.target>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>cat.udl.asic.hdesk</groupId>
+			<artifactId>sakai-hdesk-api</artifactId>
+		</dependency>
+	
+		<dependency>
+			<groupId>cat.udl.asic.hdesk</groupId>
+			<artifactId>sakai-hdesk-impl</artifactId>
+		</dependency>
+
+	</dependencies>
+	<build>
+		<resources>
+			<resource>
+				<directory>src/sql</directory>
+				<includes>
+					<include>**/*.sql</include>
+				</includes>
+			</resource>
+		</resources>
+	</build>
+</project>
