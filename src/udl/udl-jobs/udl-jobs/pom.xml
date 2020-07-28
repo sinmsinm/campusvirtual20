@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+		<groupId>cat.udl.asic.sync</groupId>
+        <artifactId>sincroCM-scheduler-base</artifactId>
+        <version>1.21-SNAPSHOT</version>
+    </parent>
+	
+	<modelVersion>4.0.0</modelVersion>
+	<name>Sincro amb CM Quartz Scheduler Jobs</name>
+	<groupId>cat.udl.asic.sync</groupId>
+	<artifactId>sincroCM-scheduler-jobs</artifactId>
+
+	<organization>
+        <name>Universitat de Lleida, ASIC</name>
+        <url>http://www.udl.cat</url>
+    </organization>
+    <inceptionYear>2013</inceptionYear>
+
+	<packaging>jar</packaging>
+  	
+	<dependencies>
+	    <dependency>
+            <groupId>org.sakaiproject.kernel</groupId>
+            <artifactId>sakai-kernel-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.sakaiproject.kernel</groupId>
+            <artifactId>sakai-kernel-util</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.sakaiproject.kernel</groupId>
+            <artifactId>sakai-component-manager</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.sakaiproject.scheduler</groupId>
+            <artifactId>scheduler-component-shared</artifactId>
+        </dependency>
+         <dependency>
+            <groupId>org.sakaiproject.edu-services.course-management</groupId>
+            <artifactId>coursemanagement-api</artifactId>
+        </dependency>
+        <dependency>
+		    <groupId>org.sakaiproject.edu-services.sections</groupId>
+      		<artifactId>sections-api</artifactId>
+	    </dependency>
+	    <dependency>
+	    	<groupId>org.sakaiproject.emailtemplateservice</groupId>
+            <artifactId>emailtemplateservice-api</artifactId>
+        </dependency>
+        <dependency>
+	    	<groupId>org.sakaiproject.announcement</groupId>
+            <artifactId>sakai-announcement-api</artifactId>
+        </dependency>
+        <dependency>
+	    	<groupId>org.sakaiproject.message</groupId>
+            <artifactId>sakai-message-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.7</version>
+            <scope>test</scope>
+        </dependency>
+         <dependency>
+	      	<groupId>log4j</groupId>
+	      	<artifactId>log4j</artifactId>
+	      	<version>1.2.16</version> 
+	    </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+        </dependency>
+		<dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+        <dependency>
+		<groupId>org.apache.commons</groupId>
+		<artifactId>commons-lang3</artifactId>
+		<version>3.4</version>
+		</dependency>
+        <dependency>
+            <groupId>xerces</groupId>
+            <artifactId>xercesImpl</artifactId>
+            <version>2.6.2</version>
+        </dependency>
+        <dependency>
+            <artifactId>jdom</artifactId>
+            <groupId>jdom</groupId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.6</version>
+        </dependency> 
+	</dependencies> 
+
+	
+</project>
