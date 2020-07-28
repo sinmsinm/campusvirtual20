@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class name="es.udl.asic.sakaiproject.tool.einahelpdesk.Assistencia" table="ASSISTENCIA" polymorphism="implicit">
+    <id name="ticket" column="TICKET">
+      <generator class="assigned"/>
+    </id>
+    <property name="consulta" column="CONSULTA" type="java.lang.String" />
+    <property name="usuari" column="USUARI" type="java.lang.String"/>
+    <property name="id_campus" column="ID_CAMPUS" type="java.lang.Integer"/>
+    <property name="id_categoria" column="ID_CATEGORIA" type="java.lang.Integer"/>
+    <property name="prioritat" column="PRIORITAT" type="java.lang.Integer"/>
+    <property name="estat" column="ESTAT" type="java.lang.Integer"/>
+  
+  </class>
+</hibernate-mapping>
