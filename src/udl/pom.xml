@@ -13,9 +13,9 @@
     <artifactId>udl-base</artifactId>
     <packaging>pom</packaging>
 	
-	<modules>
-		<!-- 
+	<modules> 
 		<module>directori</module>
+		<!--
 		<module>helpdesk</module>
 		<module>reports</module>
 		<module>actes</module>
