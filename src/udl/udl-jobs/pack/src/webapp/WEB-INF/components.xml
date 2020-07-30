@@ -1,0 +1,778 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+	"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	
+
+	<bean id="courseManagementSincro" class="cat.udl.asic.jobs.courseManagementSincro" scope="singleton" init-method="init">
+		
+		<property name="siteService"
+        ref="org.sakaiproject.site.api.SiteService" />
+        <property name="securityService"
+        ref="org.sakaiproject.authz.api.SecurityService" />
+        <property name="authzGroupService"
+        ref="org.sakaiproject.authz.api.AuthzGroupService" />
+        <property name="courseManagementService"
+        ref="org.sakaiproject.coursemanagement.api.CourseManagementService" />
+         <property name="groupProvider"
+        ref="org.sakaiproject.authz.api.GroupProvider" />
+           <property name="sqlService"
+        ref="org.sakaiproject.db.api.SqlService" />
+        	<property name="userDirectoryService"
+        ref="org.sakaiproject.user.api.UserDirectoryService" /> 
+	</bean>
+	<bean id="org.sakaiproject.api.app.scheduler.JobBeanWrapper.courseManagementSincro"
+		class="org.sakaiproject.component.app.scheduler.jobs.SpringJobBeanWrapper"
+		scope="singleton" init-method="init">
+		
+		<property name="beanId">
+			<value>courseManagementSincro</value>
+		</property>
+      
+		<property name="jobName">
+		<value>Tasca de sincronització amb Course Management</value>
+		</property>
+		
+      	<property name="schedulerManager">
+			<ref bean="org.sakaiproject.api.app.scheduler.SchedulerManager" />
+		</property>
+		
+   </bean>
+   
+	<bean id="usuarisExternsSincro" class="cat.udl.asic.jobs.usuarisExternsSincro" scope="singleton" init-method="init">
+		
+        <property name="securityService"
+        ref="org.sakaiproject.authz.api.SecurityService" />
+        <property name="emailService"
+        ref="org.sakaiproject.email.api.EmailService" />
+          <property name="sqlService"
+        ref="org.sakaiproject.db.api.SqlService" />
+        <property name="userDirectoryService"
+        ref="org.sakaiproject.user.api.UserDirectoryService" /> 
+        
+	</bean>
+	<bean id="org.sakaiproject.api.app.scheduler.JobBeanWrapper.usuarisExternsSincro"
+		class="org.sakaiproject.component.app.scheduler.jobs.SpringJobBeanWrapper"
+		scope="singleton" init-method="init">
+		
+		<property name="beanId">
+			<value>usuarisExternsSincro</value>
+		</property>
+      
+		<property name="jobName">
+			<value>Tasca de sincronització dels usuaris externs</value>
+		</property>
+		
+      	<property name="schedulerManager">
+			<ref bean="org.sakaiproject.api.app.scheduler.SchedulerManager" />
+		</property>
+		
+   </bean>
+   	
+   <bean id="altaUsuarisGenerics" class="cat.udl.asic.jobs.altaUsuarisGenerics" scope="singleton" init-method="init">
+		
+        <property name="securityService"
+        ref="org.sakaiproject.authz.api.SecurityService" />
+        <property name="sqlService"
+        ref="org.sakaiproject.db.api.SqlService" />
+        <property name="siteService"
+        ref="org.sakaiproject.site.api.SiteService" />
+        <property name="userDirectoryService"
+        ref="org.sakaiproject.user.api.UserDirectoryService" />
+        <property name="emailService"
+        ref="org.sakaiproject.email.api.EmailService" /> 
+        <property name="emailTemplateService" 
+        ref="org.sakaiproject.emailtemplateservice.service.EmailTemplateService"/>
+		<property name="sessionManager" 
+        ref="org.sakaiproject.tool.api.SessionManager" />        
+	</bean>
+	<bean id="org.sakaiproject.api.app.scheduler.JobBeanWrapper.altaUsuarisGenerics"
+		class="org.sakaiproject.component.app.scheduler.jobs.SpringJobBeanWrapper"
+		scope="singleton" init-method="init">
+		
+		<property name="beanId">
+			<value>altaUsuarisGenerics</value>
+		</property>
+      
+		<property name="jobName">
+			<value>Tasca de creació dels usuaris genèrics</value>
+		</property>
+		
+      	<property name="schedulerManager">
+			<ref bean="org.sakaiproject.api.app.scheduler.SchedulerManager" />
+		</property>
+		
+   </bean>
+   
+   <bean id="correccioFavorits" class="cat.udl.asic.jobs.correccioFavorits" scope="singleton" init-method="init">
+		
+        <property name="securityService"
+        ref="org.sakaiproject.authz.api.SecurityService" />
+        <property name="sqlService"
+        ref="org.sakaiproject.db.api.SqlService" />
+        <property name="siteService"
+        ref="org.sakaiproject.site.api.SiteService" />
+		<property name="preferencesService"
+        ref="org.sakaiproject.user.api.PreferencesService" />      
+	</bean>
+	<bean id="org.sakaiproject.api.app.scheduler.JobBeanWrapper.correccioFavorits"
+		class="org.sakaiproject.component.app.scheduler.jobs.SpringJobBeanWrapper"
+		scope="singleton" init-method="init">
+		
+		<property name="beanId">
+			<value>correccioFavorits</value>
+		</property>
+      
+		<property name="jobName">
+			<value>Correcció de preferències dels usuaris en relació als espais favorits</value>
+		</property>
+		
+      	<property name="schedulerManager">
+			<ref bean="org.sakaiproject.api.app.scheduler.SchedulerManager" />
+		</property>
+		
+   </bean>
+   
+   
+   <bean id="deshabilitaGenerics" class="cat.udl.asic.jobs.deshabilitaGenerics" scope="singleton" init-method="init">
+		
+        <property name="securityService"
+        ref="org.sakaiproject.authz.api.SecurityService" />
+        <property name="sqlService"
+        ref="org.sakaiproject.db.api.SqlService" />
+        <property name="userDirectoryService"
+        ref="org.sakaiproject.user.api.UserDirectoryService" />
+		<property name="courseManagementService"
+        ref="org.sakaiproject.coursemanagement.api.CourseManagementService" />      
+	</bean>
+	<bean id="org.sakaiproject.api.app.scheduler.JobBeanWrapper.deshabilitaGenerics"
+		class="org.sakaiproject.component.app.scheduler.jobs.SpringJobBeanWrapper"
+		scope="singleton" init-method="init">
+		
+		<property name="beanId">
+			<value>deshabilitaGenerics</value>
+		</property>
+      
+		<property name="jobName">
+			<value>Tasca de deshabilitació dels usuaris genèrics</value>
+		</property>
+		
+      	<property name="schedulerManager">
+			<ref bean="org.sakaiproject.api.app.scheduler.SchedulerManager" />
+		</property>
+		
+   </bean>
+   
+   <bean id="deshabilitaGenericsOld" class="cat.udl.asic.jobs.deshabilitaGenericsOld" scope="singleton" init-method="init">
+		
+        <property name="securityService"
+        ref="org.sakaiproject.authz.api.SecurityService" />
+        <property name="sqlService"
+        ref="org.sakaiproject.db.api.SqlService" />
+        <property name="userDirectoryService"
+        ref="org.sakaiproject.user.api.UserDirectoryService" />  
+	</bean>
+	<bean id="org.sakaiproject.api.app.scheduler.JobBeanWrapper.deshabilitaGenericsOld"
+		class="org.sakaiproject.component.app.scheduler.jobs.SpringJobBeanWrapper"
+		scope="singleton" init-method="init">
+		
+		<property name="beanId">
+			<value>deshabilitaGenericsOld</value>
+		</property>
+      
+		<property name="jobName">
+			<value>Tasca de deshabilitació dels usuaris genèrics antics</value>
+		</property>
+		
+      	<property name="schedulerManager">
+			<ref bean="org.sakaiproject.api.app.scheduler.SchedulerManager" />
+		</property>
+		
+   </bean>
+   
+	<bean id="desconnexioCM" class="cat.udl.asic.jobs.desconnexioCM" scope="singleton" init-method="init">
+		
+        <property name="securityService"
+        ref="org.sakaiproject.authz.api.SecurityService" />        
+        <property name="sectionManager"
+        ref="org.sakaiproject.section.api.SectionManager" /> 
+		<property name="sqlService"
+        ref="org.sakaiproject.db.api.SqlService" />
+        <property name="siteService"
+        ref="org.sakaiproject.site.api.SiteService" />
+        <property name="courseManagementService"
+        ref="org.sakaiproject.coursemanagement.api.CourseManagementService" />
+		<property name="entityManager"
+        ref="org.sakaiproject.entity.api.EntityManager" />
+		
+	</bean>
+	<bean id="org.sakaiproject.api.app.scheduler.JobBeanWrapper.desconnexioCM"
+		class="org.sakaiproject.component.app.scheduler.jobs.SpringJobBeanWrapper"
+		scope="singleton" init-method="init">
+		
+		<property name="beanId">
+			<value>desconnexioCM</value>
+		</property>
+      
+		<property name="jobName">
+		<value>Tasca de desconnexió del CM per anys anteriors</value>
+		</property>
+		
+      	<property name="schedulerManager">
+			<ref bean="org.sakaiproject.api.app.scheduler.SchedulerManager" />
+		</property>
+		
+   </bean>
+   
+	<bean id="espaisTitulacioSincro" class="cat.udl.asic.jobs.espaisTitulacioSincro" scope="singleton" init-method="init">
+		
+		<property name="siteService"
+        ref="org.sakaiproject.site.api.SiteService" />
+        <property name="securityService"
+        ref="org.sakaiproject.authz.api.SecurityService" />
+        <property name="authzGroupService"
+        ref="org.sakaiproject.authz.api.AuthzGroupService" />
+        <property name="courseManagementService"
+        ref="org.sakaiproject.coursemanagement.api.CourseManagementService" />
+         <property name="groupProvider"
+        ref="org.sakaiproject.authz.api.GroupProvider" />
+           <property name="sqlService"
+        ref="org.sakaiproject.db.api.SqlService" />
+        	<property name="userDirectoryService"
+        ref="org.sakaiproject.user.api.UserDirectoryService" /> 
+	</bean>
+	<bean id="org.sakaiproject.api.app.scheduler.JobBeanWrapper.espaisTitulacioSincro"
+		class="org.sakaiproject.component.app.scheduler.jobs.SpringJobBeanWrapper"
+		scope="singleton" init-method="init">
+		
+		<property name="beanId">
+			<value>espaisTitulacioSincro</value>
+		</property>
+      
+		<property name="jobName">
+		<value>Tasca de sincronització d'espais de comunicacio amb Course Management</value>
+		</property>
+		
+      	<property name="schedulerManager">
+			<ref bean="org.sakaiproject.api.app.scheduler.SchedulerManager" />
+		</property>
+		
+   </bean>
+   
+   <bean id="altaAlumnesPAT" class="cat.udl.asic.jobs.altaAlumnesPAT" scope="singleton" init-method="init">
+		
+		<property name="siteService"
+        ref="org.sakaiproject.site.api.SiteService" />
+        <property name="securityService"
+        ref="org.sakaiproject.authz.api.SecurityService" />
+        <property name="courseManagementService"
+        ref="org.sakaiproject.coursemanagement.api.CourseManagementService" />
+        <property name="sqlService"
+        ref="org.sakaiproject.db.api.SqlService" />
+        <property name="userDirectoryService"
+        ref="org.sakaiproject.user.api.UserDirectoryService" /> 
+	</bean>
+	<bean id="org.sakaiproject.api.app.scheduler.JobBeanWrapper.altaAlumnesPAT"
+		class="org.sakaiproject.component.app.scheduler.jobs.SpringJobBeanWrapper"
+		scope="singleton" init-method="init">
+		
+		<property name="beanId">
+			<value>altaAlumnesPAT</value>
+		</property>
+      
+		<property name="jobName">
+		<value>Tasca per fer alta d'alumnes als espais de tutoria del programa Nèstor</value>
+		</property>
+		
+      	<property name="schedulerManager">
+			<ref bean="org.sakaiproject.api.app.scheduler.SchedulerManager" />
+		</property>
+		
+   </bean>
+   
+    <bean id="courseManagementRosterSincro" class="cat.udl.asic.jobs.courseManagementRosterSincro" scope="singleton" init-method="init">		
+		
+   		<property name="authzGroupService" ref="org.sakaiproject.authz.api.AuthzGroupService" />
+		<property name="courseManagementService" ref="org.sakaiproject.coursemanagement.api.CourseManagementService" />
+		<property name="sessionManager" ref="org.sakaiproject.tool.api.SessionManager" />
+		<property name="siteService" ref="org.sakaiproject.site.api.SiteService" />						
+		
+		<property name="sqlService" ref="org.sakaiproject.db.api.SqlService" />
+		<property name="securityService" ref="org.sakaiproject.authz.api.SecurityService" />
+					
+   	</bean>
+   	<bean id="org.sakaiproject.api.app.scheduler.JobBeanWrapper.courseManagementRosterSincro"
+		class="org.sakaiproject.component.app.scheduler.jobs.SpringJobBeanWrapper"
+		scope="singleton" init-method="init">
+		
+		<property name="beanId">
+			<value>courseManagementRosterSincro</value>
+		</property>
+      
+		<property name="jobName">
+		<value>Sincronitza memberships de sites tipus course per totes les academic sessions, o especifica Job Name amb 'term=THE_TERM_EID'</value>
+		</property>
+		
+      	<property name="schedulerManager">
+			<ref bean="org.sakaiproject.api.app.scheduler.SchedulerManager" />
+		</property>
+		
+   </bean>   
+   
+   <bean id="canviAnyDoctorat" class="cat.udl.asic.jobs.canviAnyDoctorat" scope="singleton" init-method="init">		
+		
+   		<property name="authzGroupService" ref="org.sakaiproject.authz.api.AuthzGroupService" />
+		<property name="courseManagementService" ref="org.sakaiproject.coursemanagement.api.CourseManagementService" />
+		<property name="siteService" ref="org.sakaiproject.site.api.SiteService" />						
+		<property name="groupProvider" ref="org.sakaiproject.authz.api.GroupProvider" />
+		<property name="sqlService" ref="org.sakaiproject.db.api.SqlService" />
+		<property name="securityService" ref="org.sakaiproject.authz.api.SecurityService" />
+					
+   	</bean>
+   	<bean id="org.sakaiproject.api.app.scheduler.JobBeanWrapper.canviAnyDoctorat"
+		class="org.sakaiproject.component.app.scheduler.jobs.SpringJobBeanWrapper"
+		scope="singleton" init-method="init">
+		
+		<property name="beanId">
+			<value>canviAnyDoctorat</value>
+		</property>
+      
+		<property name="jobName">
+		<value>Canvi dels grups de doctorat</value>
+		</property>
+		
+      	<property name="schedulerManager">
+			<ref bean="org.sakaiproject.api.app.scheduler.SchedulerManager" />
+		</property>
+		
+   </bean>   
+   
+   	<bean id="notificaGrupsNous" class="cat.udl.asic.jobs.notificaGrupsNous" scope="singleton" init-method="init">		
+		<property name="securityService"
+        ref="org.sakaiproject.authz.api.SecurityService" />        
+        <property name="sqlService"
+        ref="org.sakaiproject.db.api.SqlService" />
+        <property name="sessionManager" 
+        ref="org.sakaiproject.tool.api.SessionManager" />
+        <property name="userDirectoryService"
+        ref="org.sakaiproject.user.api.UserDirectoryService" /> 
+        <property name="emailService"
+        ref="org.sakaiproject.email.api.EmailService" />
+        <property name="emailTemplateService" 
+        ref="org.sakaiproject.emailtemplateservice.service.EmailTemplateService"/>
+        	</bean>
+   	<bean id="org.sakaiproject.api.app.scheduler.JobBeanWrapper.notificaGrupsNous"
+		class="org.sakaiproject.component.app.scheduler.jobs.SpringJobBeanWrapper"
+		scope="singleton" init-method="init">
+		
+		<property name="beanId">
+			<value>notificaGrupsNous</value>
+		</property>
+      
+		<property name="jobName">
+		<value>Tasca per a notificar als responsables d'assignatura la planificació de nous grups</value>
+		</property>
+		
+      	<property name="schedulerManager">
+			<ref bean="org.sakaiproject.api.app.scheduler.SchedulerManager" />
+		</property>
+		
+   </bean>
+   
+   	
+   <!--  Bean de EquestaLlengues -->
+   
+   
+   
+   	<bean id="org.sakaiproject.api.app.scheduler.JobBeanWrapper.EnquestaLlengues"
+		class="org.sakaiproject.component.app.scheduler.jobs.SpringJobBeanWrapper"
+		scope="singleton" init-method="init">
+		
+		<property name="beanId">
+			<value>EnquestaLlengues</value>
+		</property>
+      
+		<property name="jobName">
+		<value>Ensquesta Primer:Actualitza les preferencies dels usuaris que han de fer l'enquesta de llengues</value>
+		</property>
+		
+      	<property name="schedulerManager">
+			<ref bean="org.sakaiproject.api.app.scheduler.SchedulerManager" />
+		</property>
+		
+   </bean>  
+   <bean id="EnquestaLlengues" class="cat.udl.asic.jobs.EnquestaLlengues" scope="singleton" init-method="init">		
+		<property name="securityService" ref="org.sakaiproject.authz.api.SecurityService" />        
+		<property name="sqlService" ref="cat.udl.asic.jobs.api.SqlService.ServiceEnqPrimer" />
+		<property name="userDirectoryService" ref="org.sakaiproject.user.api.UserDirectoryService" /> 
+		<property name="preferencesService" ref="org.sakaiproject.user.api.PreferencesService" />
+		 <property name="authzGroupService" ref="org.sakaiproject.authz.api.AuthzGroupService" />
+		 <property name="sessionManager" ref="org.sakaiproject.tool.api.SessionManager" />
+	</bean>
+
+	<!--  Definició del SqlService utilitat per EnquestaLLengues -->
+   	<bean id="cat.udl.asic.jobs.api.SqlService.ServiceEnqPrimer"
+		parent="cat.udl.asic.jobs.api.SqlService.Service">
+		<property name="defaultDataSource">
+			<ref bean="cat.udl.asic.jobs.api.SqlService.DbDataSourceEnqPrimer" />
+		</property>
+		<!-- <property name="longDataSource">
+			<ref bean="cat.udl.asic.jobs.api.SqlService.DbDataSourceEnqPrimer" />
+		</property> -->		
+	</bean>	
+   	
+   	<!--  Definició del datasource utilitzat per el sqlService de EquestaLlengues -->
+   	<bean id="cat.udl.asic.jobs.api.SqlService.DbDataSourceEnqPrimer" parent="jobs.local.javax.sql.DbBaseDataSource" />
+   
+   	
+   	
+   	<!--  Bean de DesactivaEnquestaCV del projecte EnquestaLlengues -->
+	<bean id="org.sakaiproject.api.app.scheduler.JobBeanWrapper.DesactivaEnquestaCV"
+		class="org.sakaiproject.component.app.scheduler.jobs.SpringJobBeanWrapper"
+		scope="singleton" init-method="init">
+		
+		<property name="beanId">
+			<value>DesactivaEnquestaCV</value>
+		</property>
+      
+		<property name="jobName">
+		<value>DesactivaEnquestaCV: Elimina la UserPreference dels usuaris de CV que tenen pendent fer l'enquesta d'idiomes</value>
+		</property>
+		
+      	<property name="schedulerManager">
+			<ref bean="org.sakaiproject.api.app.scheduler.SchedulerManager" />
+		</property>
+	</bean>  
+	<bean id="DesactivaEnquestaCV" class="cat.udl.asic.jobs.DesactivaEnquestaCV" scope="singleton" init-method="init">		
+		<property name="securityService" ref="org.sakaiproject.authz.api.SecurityService" />        
+		<property name="sqlService" ref="cat.udl.asic.jobs.api.SqlService.ServiceEnqPrimer" />
+		<property name="userDirectoryService" ref="org.sakaiproject.user.api.UserDirectoryService" /> 
+		<property name="preferencesService" ref="org.sakaiproject.user.api.PreferencesService" />
+		<property name="authzGroupService" ref="org.sakaiproject.authz.api.AuthzGroupService" />
+		<property name="sessionManager" ref="org.sakaiproject.tool.api.SessionManager" />
+	</bean>
+	
+	<!--  Bean de DesactivaProvaNivellCV del projecte EnquestaLlengues -->
+   	<bean id="org.sakaiproject.api.app.scheduler.JobBeanWrapper.DesactivaProvaNivellCV"
+		class="org.sakaiproject.component.app.scheduler.jobs.SpringJobBeanWrapper"
+		scope="singleton" init-method="init">
+		
+		<property name="beanId">
+			<value>DesactivaProvaNivellCV</value>
+		</property>
+      
+		<property name="jobName">
+		<value>DesactivaProvaNivellCV (EnquestaLlengues): Elimina la preferencia dels usuaris de CV que tenen pendent de fer la prova de nivell d'anglès (simtest)</value>
+		</property>
+		
+      	<property name="schedulerManager">
+			<ref bean="org.sakaiproject.api.app.scheduler.SchedulerManager" />
+		</property>
+	</bean>  
+	<bean id="DesactivaProvaNivellCV" class="cat.udl.asic.jobs.DesactivaProvaNivellCV" scope="singleton" init-method="init">		
+		<property name="securityService" ref="org.sakaiproject.authz.api.SecurityService" />        
+		<property name="sqlService" ref="cat.udl.asic.jobs.api.SqlService.ServiceEnqPrimer" />
+		<property name="userDirectoryService" ref="org.sakaiproject.user.api.UserDirectoryService" /> 
+		<property name="preferencesService" ref="org.sakaiproject.user.api.PreferencesService" />
+		<property name="authzGroupService" ref="org.sakaiproject.authz.api.AuthzGroupService" />
+		<property name="sessionManager" ref="org.sakaiproject.tool.api.SessionManager" />
+	</bean>   	
+   	
+   
+   	
+   	<!--  Bean de ActivaEnquestaCV del projecte EnquestaLlengues -->
+	<bean id="org.sakaiproject.api.app.scheduler.JobBeanWrapper.ActivaEnquestaCV"
+		class="org.sakaiproject.component.app.scheduler.jobs.SpringJobBeanWrapper"
+		scope="singleton" init-method="init">
+		
+		<property name="beanId">
+			<value>ActivaEnquestaCV</value>
+		</property>
+      
+		<property name="jobName">
+		<value>ActivaEnquestaCV: Afegeix la UserPreference dels usuaris de CV que tenen pendent fer enquesta idiomes</value>
+		</property>
+		
+      	<property name="schedulerManager">
+			<ref bean="org.sakaiproject.api.app.scheduler.SchedulerManager" />
+		</property>
+	</bean>  
+	<bean id="ActivaEnquestaCV" class="cat.udl.asic.jobs.ActivaEnquestaCV" scope="singleton" init-method="init">		
+		<property name="securityService" ref="org.sakaiproject.authz.api.SecurityService" />        
+		<property name="sqlService" ref="cat.udl.asic.jobs.api.SqlService.ServiceEnqPrimer" />
+		<property name="userDirectoryService" ref="org.sakaiproject.user.api.UserDirectoryService" /> 
+		<property name="preferencesService" ref="org.sakaiproject.user.api.PreferencesService" />
+		<property name="authzGroupService" ref="org.sakaiproject.authz.api.AuthzGroupService" />
+		<property name="sessionManager" ref="org.sakaiproject.tool.api.SessionManager" />
+	</bean>
+   	
+   	<!--  Bean de ActivaProvaNivellCV del projecte EnquestaLlengues -->
+   	<bean id="org.sakaiproject.api.app.scheduler.JobBeanWrapper.ActivaProvaNivellCV"
+		class="org.sakaiproject.component.app.scheduler.jobs.SpringJobBeanWrapper"
+		scope="singleton" init-method="init">
+		
+		<property name="beanId">
+			<value>ActivaProvaNivellCV</value>
+		</property>
+      
+		<property name="jobName">
+		<value>ActivaProvaNivellCV: afegeix la preferencia dels usuaris de CV que tenen pendent de fer la prova de nivell angles Simtest</value>
+		</property>
+		
+      	<property name="schedulerManager">
+			<ref bean="org.sakaiproject.api.app.scheduler.SchedulerManager" />
+		</property>
+	</bean>  
+	<bean id="ActivaProvaNivellCV" class="cat.udl.asic.jobs.ActivaProvaNivellCV" scope="singleton" init-method="init">		
+		<property name="securityService" ref="org.sakaiproject.authz.api.SecurityService" />        
+		<property name="sqlService" ref="cat.udl.asic.jobs.api.SqlService.ServiceEnqPrimer" />
+		<property name="userDirectoryService" ref="org.sakaiproject.user.api.UserDirectoryService" /> 
+		<property name="preferencesService" ref="org.sakaiproject.user.api.PreferencesService" />
+		<property name="authzGroupService" ref="org.sakaiproject.authz.api.AuthzGroupService" />
+		<property name="sessionManager" ref="org.sakaiproject.tool.api.SessionManager" />
+	</bean>  
+   	
+   	
+   		<!--  Bean de EnviaNotificacionsAppMobil del projecte AppMobil -->
+	<bean id="org.sakaiproject.api.app.scheduler.JobBeanWrapper.EnviaNotificacionsAppMobil"
+		class="org.sakaiproject.component.app.scheduler.jobs.SpringJobBeanWrapper"
+		scope="singleton" init-method="init">
+		
+		<property name="beanId">
+			<value>EnviaNotificacionsAppMobil</value>
+		</property>
+      
+		<property name="jobName">
+		<value>EnviaNotificacionsAppMobil: Envia els continguts dels missatges pendents al servidor de l'AppMobil</value>
+		</property>
+		
+      	<property name="schedulerManager">
+			<ref bean="org.sakaiproject.api.app.scheduler.SchedulerManager" />
+		</property>
+	</bean>  
+	<bean id="EnviaNotificacionsAppMobil" class="cat.udl.asic.jobs.EnviaNotificacionsAppMobil" scope="singleton" init-method="init">		
+		<property name="securityService" ref="org.sakaiproject.authz.api.SecurityService" />        
+		<property name="sqlService" ref="org.sakaiproject.db.api.SqlService" />
+		<property name="authzGroupService" ref="org.sakaiproject.authz.api.AuthzGroupService" />
+		<property name="entityManager" ref="org.sakaiproject.entity.api.EntityManager" />
+		<property name="announcementService" ref="org.sakaiproject.announcement.api.AnnouncementService" />
+		<property name="siteService" ref="org.sakaiproject.site.api.SiteService" />
+		<property name="serverConfigurationService" ref="org.sakaiproject.component.api.ServerConfigurationService" />
+		<property name="timeService" ref="org.sakaiproject.time.api.TimeService" />
+	</bean>
+   	
+   	
+   	
+   	<!--  
+   		Configuració "parent" que pot ser reaprofitada per altres sources  
+   		Definicions parent de serveis per a SQL de mysql i oracle. 
+   		Els datasources i services poder hereatar d'aquestes per no haver de definir tots els parametres
+   	-->
+   	
+	<bean id="jobs.local.javax.sql.DefaultDataSource" parent="jobs.local.javax.sql.DbBaseDataSource"></bean>
+
+
+	<bean id="cat.udl.asic.jobs.BasicSqlServiceSqlMySql" class="org.sakaiproject.db.impl.BasicSqlServiceSqlMySql"
+		scope="singleton" />
+
+	<bean id="cat.udl.asic.jobs.BasicSqlServiceSqlOracle" class="org.sakaiproject.db.impl.BasicSqlServiceSqlOracle"
+		scope="singleton" />
+
+	<bean id="cat.udl.asic.jobs.BasicSqlServiceSqlDefault" class="org.sakaiproject.db.impl.BasicSqlServiceSqlDefault"
+		scope="singleton" />
+   	
+   	
+   	
+   	<!-- Shared parent configuration -->
+	
+	<bean id="cat.udl.asic.jobs.api.SqlService.Service"
+		class="org.sakaiproject.db.impl.BasicSqlService" init-method="init"
+		destroy-method="destroy" scope="singleton">
+
+		<lookup-method name="usageSessionService"
+			bean="org.sakaiproject.event.api.UsageSessionService" />
+		<lookup-method name="threadLocalManager"
+			bean="org.sakaiproject.thread_local.api.ThreadLocalManager" />
+
+		<property name="defaultDataSource">
+			<ref bean="jobs.local.javax.sql.DefaultDataSource" />
+		</property>
+
+		<!-- <property name="longDataSource">
+			<ref bean="jobs.local.javax.sql.LongDataSource" />
+		</property> -->
+
+		<property name="autoDdl">
+			<value>false</value>
+		</property>
+
+		<property name="commitAfterRead">
+			<value>true</value>
+		</property>
+
+		<!-- HSQLDB configuration -->
+		<property name="vendor">
+			<value>mysql</value>
+		</property>
+
+
+		<property name="databaseBeans">
+			<map>
+				<entry key="default">
+					<ref bean="cat.udl.asic.jobs.BasicSqlServiceSqlDefault" />
+				</entry>
+				<entry key="mysql">
+					<ref bean="cat.udl.asic.jobs.BasicSqlServiceSqlMySql" />
+				</entry>
+				<entry key="oracle">
+					<ref bean="cat.udl.asic.jobs.BasicSqlServiceSqlOracle" />
+				</entry>
+			</map>
+		</property>
+
+	</bean>
+
+
+	<!--Shared for all the service -->
+
+	<bean id="jobs.local.javax.sql.DbBaseDataSource"
+		abstract="true" class="org.apache.commons.dbcp.SakaiBasicDataSource"
+		destroy-method="close">
+
+		<!-- The fully qualified Java class name of the JDBC driver to be used. -->
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+
+		<!-- The connection URL to be passed to our JDBC driver to establish a 
+			connection. -->
+		<property name="url">
+			<value>jdbc:mysql://localhost/employees</value>
+		</property>
+
+		<!-- The connection username to be passed to our JDBC driver to establish 
+			a connection. -->
+		<property name="username">
+			<value>demo</value>
+		</property>
+
+		<!-- The connection password to be passed to our JDBC driver to establish 
+			a connection. -->
+		<property name="password">
+			<value>test</value>
+		</property>
+
+		<!-- The initial number of connections that are created when the pool is 
+			started. -->
+		<property name="initialSize">
+			<value>5</value>
+		</property>
+
+		<!-- The maximum number of active connections that can be allocated from 
+			this pool at the same time, or zero for no limit. -->
+		<property name="maxActive">
+			<value>50</value>
+		</property>
+
+		<!-- The maximum number of active connections that can remain idle in the 
+			pool, without extra ones being released, or zero for no limit. -->
+		<property name="maxIdle">
+			<value>5</value>
+		</property>
+
+		<!-- The minimum number of active connections that can remain idle in the 
+			pool, without extra ones being created, or 0 to create none. -->
+		<property name="minIdle">
+			<value>5</value>
+		</property>
+
+		<!-- The maximum number of milliseconds that the pool will wait (when there 
+			are no available connections) for a connection to be returned before throwing 
+			an exception, or -1 to wait indefinitely. -->
+		<property name="maxWait">
+			<value>300000</value>
+		</property>
+
+		<!-- The number of objects to examine during each run of the idle object 
+			evictor thread (if any). -->
+		<property name="numTestsPerEvictionRun">
+			<value>3</value>
+		</property>
+
+		<!-- The indication of whether objects will be validated before being borrowed 
+			from the pool. If the object fails to validate, it will be dropped from the 
+			pool, and we will attempt to borrow another. Note: this has been shown to 
+			cause performance problems with Oracle (leave it false) -->
+		<property name="testOnBorrow">
+			<value>false</value>
+		</property>
+
+		<!-- The indication of whether objects will be validated before being returned 
+			to the pool. -->
+		<property name="testOnReturn">
+			<value>false</value>
+		</property>
+
+		<!-- The indication of whether objects will be validated by the idle object 
+			evictor (if any). If an object fails to validate, it will be dropped from 
+			the pool. -->
+		<property name="testWhileIdle">
+			<value>false</value>
+		</property>
+
+		<!-- The SQL query that will be used to validate connections from this 
+			pool before returning them to the caller. If specified, this query MUST be 
+			a SQL SELECT statement that returns at least one row. Note: This has been 
+			shown to cause performance problems under Oracle: leave it unset. -->
+		<!-- <property name="validationQuery"/> <value>select 1 from INFORMATION_SCHEMA.SYSTEM_USERS</value> 
+			</property> -->
+
+		<!-- The default auto-commit state of connections created by this pool. -->
+		<property name="defaultAutoCommit">
+			<value>true</value>
+		</property>
+
+		<!-- The default read-only state of connections created by this pool. -->
+		<property name="defaultReadOnly">
+			<value>false</value>
+		</property>
+
+		<!-- Use TRANSACTION_READ_COMMITTED for MySQL -->
+		<!-- DO NOT SET for Oracle (the default TRANSACTION_READ_COMMITTED is fine, 
+			and setting it causes performance problems) -->
+		<!-- Up to and including 1.7.1, HSQLDB supports only Connection.TRANSACTION_READ_UNCOMMITTED. -->
+		<!-- <property name="defaultTransactionIsolationString"> <value>TRANSACTION_READ_UNCOMMITTED</value> 
+			</property> -->
+
+		<!-- Prepared statement pooling for this pool. -->
+		<property name="poolPreparedStatements">
+			<value>false</value>
+		</property>
+
+		<!-- The maximum number of open statements that can be allocated from the 
+			statement pool at the same time, or zero for no limit. Since a connection 
+			usually only uses one or two statements at a time, this is mostly used to 
+			help detect resource leaks. -->
+		<property name="maxOpenPreparedStatements">
+			<value>0</value>
+		</property>
+
+		<!-- The minimum amount of time an object may sit idle in the pool before 
+			it is eligable for eviction by the idle object evictor (if any). -->
+		<property name="minEvictableIdleTimeMillis">
+			<value>1800000</value>
+		</property>
+
+		<!-- The number of milliseconds to sleep between runs of the idle object 
+			evictor thread. When non-positive, no idle object evictor thread will be 
+			run. -->
+		<property name="timeBetweenEvictionRunsMillis">
+			<value>900000</value>
+		</property>
+
+	</bean>
+   	
+   	
+   
+</beans>   

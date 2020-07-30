@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<emailTemplate>
+	<locale>ca_ES</locale>
+	<subject>Avís: Canvis en la planificació de l'assignatura ${codi_ass}: ${nom_ass}</subject>
+		<key>notificacio.nouGrup</key>
+		<owner>admin</owner>
+		<version>1</version>
+		<message> 
+Benvolgut/da: 
+
+
+El campus virtual ha detectat la planificació d'un nou grup al programa de gestió acadèmica en l'assignatura ${codi_ass}: ${nom_ass} 
+
+Codi grup : ${codi_grup}
+Nom grup:  ${nom_grup}
+	        
+Si vol afegir aquest nou grup en alguna assignatura del campus virtual, cal que segueixi les instrucions detallades en el següent enllaç: 
+
+https://cvcms.udl.cat/ajuda/afegir-un-grup-nou-planificat-a-un-espai/
+
+
+Aquest missatge ha estat enviat automàticament.
+	</message>
+</emailTemplate>

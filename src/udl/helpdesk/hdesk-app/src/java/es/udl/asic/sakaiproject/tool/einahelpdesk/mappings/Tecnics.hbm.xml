@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class name="es.udl.asic.sakaiproject.tool.einahelpdesk.mappings.Tecnics" table="TECNICS" polymorphism="implicit">
+    <id name="id_tecnic" column="ID_TECNIC">
+      <generator class="assigned"/>
+    </id>
+    <property name="nom" column="NOM" type="java.lang.String"/>
+    <property name="activat" column="ACTIVAT" type="java.lang.Integer"/>
+   </class>
+</hibernate-mapping>

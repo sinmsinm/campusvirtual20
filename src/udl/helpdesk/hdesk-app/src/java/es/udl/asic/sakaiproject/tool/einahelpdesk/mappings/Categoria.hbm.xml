@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class name="es.udl.asic.sakaiproject.tool.einahelpdesk.mappings.Categoria" table="CATEGORIA" polymorphism="implicit">
+    <id name="id_categoria" column="ID_CATEGORIA">
+      <generator class="sequence">
+		<param name="sequence">categoria_inc</param>
+	</generator>
+    </id>
+    <property name="tipus" column="TIPUS" type="java.lang.String" />
+    <property name="descripcio" column="DESCRIPCIO" type="java.lang.String"/>
+  </class>
+</hibernate-mapping>

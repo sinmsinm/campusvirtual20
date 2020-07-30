@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<registration>
+    <tool id="sakai.einahelpdesk" 
+    	title="EinaHelpDesk" 
+    	description="Eina HelpDesk.">
+	<configuration name="hibernate.dialect" value="net.sf.hibernate.dialect.PostgreSQLDialect"/>
+	<configuration name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/helpdesk"/>
+	<configuration name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
+	<configuration name="hibernate.connection.username" value="postgres" />
+	<configuration name="hibernate.connection.password" value="postgres"/>
+	<configuration name="support.agent" value="suport" />
+	<configuration name="anuncis.servei.informatica" value=""/>
+	<configuration name="url.faq" value=""/>
+    </tool>
+</registration>
