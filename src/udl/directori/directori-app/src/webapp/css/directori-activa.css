@@ -1,0 +1,46 @@
+.headerudl {
+	background-color:#830051; 
+	color:#FFF; padding:5px;
+}
+
+.headerudl .langbar {
+	float:right;
+	display:block;
+}
+
+.headerudl .langbar a {
+	color: #FFF;
+}
+
+.bottom-buffer { 
+	margin-bottom:15px; 
+}
+
+.glyphicon.normal-right-spinner {
+    -webkit-animation: glyphicon-spin-r 2s infinite linear;
+    animation: glyphicon-spin-r 2s infinite linear;
+}
+
+@-webkit-keyframes glyphicon-spin-r {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+@keyframes glyphicon-spin-r {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}

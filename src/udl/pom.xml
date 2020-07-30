@@ -13,17 +13,15 @@
     <artifactId>udl-base</artifactId>
     <packaging>pom</packaging>
 	
-	<modules>
-		<!-- 
+	<modules> 
 		<module>directori</module>
-		<module>actes</module>
+		<!-- <module>actes</module>
 		<module>enquestes</module> -->
-		
 		<module>cm</module>
 		<module>datacollector</module> 
 		<module>helpdesk</module>
-        <module>reports</module>	
-        <module>udl-jobs</module>
+        	<module>reports</module>	
+        	<module>udl-jobs</module>
 			
 	</modules>    
     

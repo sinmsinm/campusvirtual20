@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>sakai-directori</artifactId>
+		<groupId>cat.udl.asic.directori</groupId>
+		<version>1.17-SNAPSHOT</version>
+	</parent>
+
+	<name>Aplicació de directori</name>
+	<groupId>cat.udl.asic.directori</groupId>
+	<artifactId>sakai-directori-app</artifactId>
+	<organization>
+		<name>Universitat de Lleida</name>
+		<url>http://www.udl.cat/</url>
+	</organization>
+	<inceptionYear>2008</inceptionYear>
+	<packaging>war</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>cat.udl.asic.directori</groupId>
+			<artifactId>sakai-directori-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.sakaiproject.kernel</groupId>
+			<artifactId>sakai-component-manager</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.sakaiproject.kernel</groupId>
+			<artifactId>sakai-kernel-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.sakaiproject.kernel</groupId>
+			<artifactId>sakai-kernel-util</artifactId>
+		</dependency>
+
+		<!-- this is required for any Sakai JSF tool -->
+		<dependency>
+			<groupId>org.sakaiproject.jsf</groupId>
+			<artifactId>jsf-tool-sun</artifactId>
+			<version>${sakai.version}</version>
+			<type>pom</type>
+		</dependency>
+
+		<!-- these are to get full Sakai integration -->
+
+		<dependency>
+			<groupId>org.sakaiproject.jsf</groupId>
+			<artifactId>jsf-app</artifactId>
+			<version>${sakai.version}</version>
+		</dependency>
+        <dependency>
+			<groupId>javax.servlet</groupId>
+        	<artifactId>javax.servlet-api</artifactId>
+        	<scope>provided</scope>
+        </dependency>
+	</dependencies>
+
+
+</project>

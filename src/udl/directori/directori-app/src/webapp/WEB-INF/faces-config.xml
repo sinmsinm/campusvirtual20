@@ -1,0 +1,326 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE faces-config PUBLIC
+  "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.0//EN"
+  "http://java.sun.com/dtd/web-facesconfig_1_0.dtd">
+<faces-config>
+    <application>
+        <message-bundle>es.udl.asic.tool.directori.bundle.Messages</message-bundle>
+        <locale-config>
+            <default-locale>en</default-locale>
+            <supported-locale>es</supported-locale>
+            <supported-locale>ca</supported-locale>
+        </locale-config>
+    </application>
+
+
+	<navigation-rule>
+		<from-view-id>/directori/smsCercaProfessor.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>main</from-outcome>
+			<to-view-id>/directori/smsCercaProfessor.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>info</from-outcome>
+            <to-view-id>/directori/info.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>main</from-outcome>
+            <to-view-id>/directori/main.jsp</to-view-id>
+        </navigation-case>
+    	<navigation-case>
+            <from-outcome>infopas</from-outcome>
+            <to-view-id>/directori/infopas.jsp</to-view-id>
+        </navigation-case>
+
+    	<navigation-case>
+            <from-outcome>canvipw</from-outcome>
+            <to-view-id>/directori/canvipw.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>canvidades</from-outcome>
+            <to-view-id>/directori/canvidades.jsp</to-view-id>
+        </navigation-case>
+         <navigation-case>
+            <from-outcome>canvidadesalu</from-outcome>
+            <to-view-id>/directori/canvidadesalu.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>canvimobil</from-outcome>
+            <to-view-id>/directori/canvimobil.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>errorpw</from-outcome>
+            <to-view-id>/directori/errorpw.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>errordades</from-outcome>
+            <to-view-id>/directori/errordades.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>errordadesalu</from-outcome>
+            <to-view-id>/directori/errordadesalu.jsp</to-view-id>
+        </navigation-case>
+		<navigation-case>
+            <from-outcome>errordadesmobil</from-outcome>
+            <to-view-id>/directori/errordadesmobil.jsp</to-view-id>
+        </navigation-case>        
+        <navigation-case>
+            <from-outcome>correctepw</from-outcome>
+            <to-view-id>/directori/correctepw.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>correctedades</from-outcome>
+            <to-view-id>/directori/correctedades.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>correctedadesalu</from-outcome>
+            <to-view-id>/directori/correctedadesalu.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>correctedadesmobil</from-outcome>
+            <to-view-id>/directori/correctedadesmobil.jsp</to-view-id>
+        </navigation-case>        
+        <navigation-case>
+            <from-outcome>revisadades</from-outcome>
+            <to-view-id>/directori/revisadades.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>revisadadesalu</from-outcome>
+            <to-view-id>/directori/revisadadesalu.jsp</to-view-id>
+        </navigation-case>
+		<navigation-case>
+            <from-outcome>revisadadesmobil</from-outcome>
+            <to-view-id>/directori/revisadadesmobil.jsp</to-view-id>
+        </navigation-case>        
+        <navigation-case>
+            <from-outcome>activa</from-outcome>
+            <to-view-id>/directori/activa.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>activaMail</from-outcome>
+            <to-view-id>/directori/activaMail.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>correcteactiva</from-outcome>
+            <to-view-id>/directori/correcteactiva.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>erroractiva</from-outcome>
+            <to-view-id>/directori/erroractiva.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>erroractivamail</from-outcome>
+            <to-view-id>/directori/erroractivamail.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>smsCerca</from-outcome>
+            <to-view-id>/directori/smsCercaProfessor.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>llistaAssignatures</from-outcome>
+            <to-view-id>/directori/llistaAssignatures.jsp</to-view-id>
+        </navigation-case>
+		<navigation-case>
+            <from-outcome>sendSms</from-outcome>
+            <to-view-id>/directori/sendSms.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>smscorrecte</from-outcome>
+            <to-view-id>/directori/correctesms.jsp</to-view-id>
+        </navigation-case>
+            <navigation-case>
+            <from-outcome>smserror</from-outcome>
+            <to-view-id>/directori/errorsms.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>activaalu</from-outcome>
+            <to-view-id>/directori/activa-alu-main.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>correcteactivaalu</from-outcome>
+            <to-view-id>/directori/correcteactivaalu.jsp</to-view-id>
+        </navigation-case>
+        
+         <navigation-case>
+            <from-outcome>norecordousuari</from-outcome>
+            <to-view-id>/directori/norecordousuari.jsp</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>norecordousuariok</from-outcome>
+            <to-view-id>/directori/norecordousuariok.jsp</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>reiniciaclauok</from-outcome>
+            <to-view-id>/directori/reiniciaclauok.jsp</to-view-id>
+        </navigation-case>
+         
+        <navigation-case>
+            <from-outcome>reiniciaclauactiva</from-outcome>
+            <to-view-id>/directori/reiniciaclauactiva.jsp</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>reiniciaclau</from-outcome>
+            <to-view-id>/directori/reiniciaclau.jsp</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>assistenciausuari</from-outcome>
+            <to-view-id>/directori/assistenciausuari.jsp</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>activamenu</from-outcome>
+            <to-view-id>/directori/activamenu.jsp</to-view-id>
+        </navigation-case>
+        
+        
+         <navigation-case>
+            <from-outcome>reiniciaclauactiva</from-outcome>
+            <to-view-id>/directori/reiniciaclauactiva.jsp</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>reiniciaclauactiva</from-outcome>
+            <to-view-id>/directori/reiniciaclauactiva.jsp</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>reiniciaclaupeticiok</from-outcome>
+            <to-view-id>/directori/reiniciaclaupeticiok.jsp</to-view-id>
+        </navigation-case>
+        
+    </navigation-rule> 
+
+
+    <!-- =================== Tool Beans ============== -->
+
+
+	<managed-bean>
+        <description>Eina de Canvi de  dadesdirectori</description>
+        <managed-bean-name>CanviDadesTool</managed-bean-name>
+        <managed-bean-class>es.udl.asic.tool.directori.CanviDadesTool</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope> 
+		<managed-property>
+            <description>Dependencia amb el servei de directoru</description>
+            <property-name>directoryService</property-name>
+            <value>#{Components["es.udl.asic.api.app.directori.DirectoryService"]}</value>
+        </managed-property>	
+	</managed-bean>
+
+	<managed-bean>
+        <description>Eina de canvi de password</description>
+        <managed-bean-name>CanviPwTool</managed-bean-name>
+        <managed-bean-class>es.udl.asic.tool.directori.CanviPwTool</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope> 
+		<managed-property>
+            <description>Dependencia amb el servei de directoru</description>
+            <property-name>directoryService</property-name>
+            <value>#{Components["es.udl.asic.api.app.directori.DirectoryService"]}</value>
+        </managed-property>	
+	</managed-bean>
+
+	<managed-bean>
+        <description>Activacio del compte PAS</description>
+        <managed-bean-name>ActivaTool</managed-bean-name>
+        <managed-bean-class>es.udl.asic.tool.directori.ActivaTool</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope> 
+		<managed-property>
+            <description>Dependencia amb el servei de directoru</description>
+            <property-name>directoryService</property-name>
+            <value>#{Components["es.udl.asic.api.app.directori.DirectoryService"]}</value>
+        </managed-property>
+        <managed-property>
+            <description>Dependencia amb el servei de matriculaService</description>
+            <property-name>matriculaService</property-name>
+            <value>#{Components["es.udl.asic.api.app.directori.MatriculaService"]}</value>
+        </managed-property>
+        <managed-property>
+            <description>Dependencia amb el servei de tractament del compte</description>
+            <property-name>accountService</property-name>
+            <value>#{Components["es.udl.asic.api.app.directori.AccountService"]}</value>
+        </managed-property>
+	</managed-bean>
+	
+	
+	<managed-bean>
+        <description>Utilitat de reset pwd i recordatori nom d'usuari</description>
+        <managed-bean-name>RecordaTool</managed-bean-name>
+        <managed-bean-class>es.udl.asic.tool.directori.RecordaTool</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope> 
+		<managed-property>
+            <description>Dependencia amb el servei de directoru</description>
+            <property-name>directoryService</property-name>
+            <value>#{Components["es.udl.asic.api.app.directori.DirectoryService"]}</value>
+        </managed-property>
+        <managed-property>
+            <description>Dependencia amb el servei de tractament del compte</description>
+            <property-name>accountService</property-name>
+            <value>#{Components["es.udl.asic.api.app.directori.AccountService"]}</value>
+        </managed-property>
+	</managed-bean>
+	
+
+	<managed-bean>
+        <description>Eina de Canvi de  dadesdirectori</description>
+        <managed-bean-name>InscripcioMobil</managed-bean-name>
+        <managed-bean-class>es.udl.asic.tool.directori.InscripcioMobil</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope> 
+		<managed-property>
+            <description>Dependencia amb el servei de directoru</description>
+            <property-name>directoryService</property-name>
+            <value>#{Components["es.udl.asic.api.app.directori.DirectoryService"]}</value>
+        </managed-property>	
+	</managed-bean>
+
+
+
+	<managed-bean>
+        <description>Eina directori</description>
+        <managed-bean-name>DirectoriTool</managed-bean-name>
+        <managed-bean-class>es.udl.asic.tool.directori.DirectoriTool</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope> 
+        <!-- <managed-property>
+            <description>Dependencia amb fitxa</description>
+            <property-name>directori</property-name>
+            <value>#{Components["es.udl.asic.api.app.directori.Directori"]}</value>
+        </managed-property>	 -->
+        <managed-property>
+            <description>Dependencia amb el servei de directoru</description>
+            <property-name>directoryService</property-name>
+            <value>#{Components["es.udl.asic.api.app.directori.DirectoryService"]}</value>
+        </managed-property>	
+    </managed-bean> 
+    
+
+	<managed-bean>
+        <description>Eina directori</description>
+        <managed-bean-name>SMSTool</managed-bean-name>
+        <managed-bean-class>es.udl.asic.tool.directori.DirectoriTool</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope> 
+        <managed-property>
+            <description>Dependencia amb el servei de directoru</description>
+            <property-name>directoryService</property-name>
+            <value>#{Components["es.udl.asic.api.app.directori.DirectoryService"]}</value>
+        </managed-property>	
+    </managed-bean> 
+
+
+
+    <managed-bean>
+        <description>Objecte assistent</description>
+        <managed-bean-name>Assistent</managed-bean-name>
+        <managed-bean-class>es.udl.asic.tool.directori.Assistent</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope> 
+        <!-- a service dependency property - for the Logger  -->
+    </managed-bean> 
+    
+    
+ </faces-config>

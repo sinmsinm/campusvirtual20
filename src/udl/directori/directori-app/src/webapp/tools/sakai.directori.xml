@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<registration>
+    <tool id="sakai.directori" helpUrl="/sakai-directori-tool/helpReg/profile_help.xml" title="Directori" description="Cerca al directori">    
+    	<configuration name="ldapserver_ro" value="" />
+    	<configuration name="ldapserver_rw" value="" />
+    	<configuration name="securityPrincipal" value="" />
+    	<configuration name="securityCredentials" value="" />
+    	<configuration name="base" value="" />
+    	<configuration name="baseRoot" value="" />
+    	<configuration name="baseAlu" value="" />
+	   	<configuration name="correus" value="" />
+		<configuration name="db" value="" />
+		<configuration name="driver" value="" />
+		<configuration name="aluDiscUrl" value="" />
+		<configuration name="aluDiscUsername" value="" />
+		<configuration name="aluDiscPassword" value="" />
+    </tool>
+    
+    <tool id="sakai.activaalu" helpUrl="/sakai-directori-tool/helpReg/profile_help.xml" title="Directori" description="Cerca al directori">    
+    	<configuration name="ldapserver_ro" value="" />
+    	<configuration name="ldapserver_rw" value="" />
+    	<configuration name="securityPrincipal" value="" />
+    	<configuration name="securityCredentials" value="" />
+    	<configuration name="base" value="" />
+    	<configuration name="baseRoot" value="" />
+    	<configuration name="baseAlu" value="" />
+	   	<configuration name="correus" value="" />
+		<configuration name="db" value="" />
+		<configuration name="driver" value="" />
+		<configuration name="aluDiscUrl" value="" />
+		<configuration name="aluDiscUsername" value="" />
+		<configuration name="aluDiscPassword" value="" />
+    </tool>
+    
+    <tool id="sakai.activapaspdi" helpUrl="/sakai-directori-tool/helpReg/profile_help.xml" title="Directori" description="Cerca al directori">    
+    	<configuration name="ldapserver_ro" value="" />
+    	<configuration name="ldapserver_rw" value="" />
+    	<configuration name="securityPrincipal" value="" />
+    	<configuration name="securityCredentials" value="" />
+    	<configuration name="base" value="" />
+    	<configuration name="baseRoot" value="" />
+    	<configuration name="baseAlu" value="" />
+	   	<configuration name="correus" value="" />
+		<configuration name="db" value="" />
+		<configuration name="driver" value="" />
+		<configuration name="aluDiscUrl" value="" />
+		<configuration name="aluDiscUsername" value="" />
+		<configuration name="aluDiscPassword" value="" />
+    </tool>
+    
+    <tool id="sakai.recordausuari" helpUrl="/sakai-directori-tool/helpReg/profile_help.xml" title="Recorda el usuari" description="Recorda el usuari">    
+
+    </tool>
+    
+    <tool id="sakai.reiniciaclau" helpUrl="/sakai-directori-tool/helpReg/profile_help.xml" title="Reinica la clau" description="Reinicia la clau">    
+
+    </tool>
+    
+    <tool id="sakai.assistenciausuaris" helpUrl="/sakai-directori-tool/helpReg/profile_help.xml" title="Assistència usuari" description="Assistència usuari">    
+
+    </tool>
+    
+    <tool id="sakai.activamenu" helpUrl="/sakai-directori-tool/helpReg/profile_help.xml" title="Menú d'acticació" description="Menú d'acticació">    
+
+    </tool>
+
+
+    <tool id="sakai.reiniciatoken" helpUrl="/sakai-directori-tool/helpReg/profile_help.xml" title="Reinicia clau" description="Reinicia clau">    
+
+    </tool>
+    
+</registration>
+
