@@ -543,14 +543,6 @@
 											<value>${sakai.config.bbc.secret}</value>
 										</replacement>
 										<replacement>
-											<token>TOKEN_BBB_SERVER_URL</token>
-											<value>${sakai.config.bbb.url}</value>
-										</replacement>
-										<replacement>
-											<token>TOKEN_BBB_SERVER_SALT</token>
-											<value>${sakai.config.bbb.salt}</value>
-										</replacement>
-										<replacement>
 											<token>TOKEN-DATACOLLECTOR-DBDATASOURCE12-USER</token>
 											<value>${datacollector.dbdatasource12.user}</value>
 										</replacement>
