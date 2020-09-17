@@ -11,6 +11,7 @@
   <name>Kaltura LTI Tool</name>
   <groupId>org.sakaiproject.kaltura</groupId>
   <artifactId>kaltura</artifactId>
+  <version>20-SNAPSHOT</version>
   <packaging>pom</packaging>
 
    <properties>
