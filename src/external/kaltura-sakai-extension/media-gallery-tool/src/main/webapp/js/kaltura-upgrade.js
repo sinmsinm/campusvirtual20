@@ -87,23 +87,27 @@ function processKalturaLtiMedia() {
 
         createIFrame: function(media, source) {
             var src = source(media);
-            console.log("createIFrame:: src: " + src);
             var iframe = $("<iframe src='" + src + "' allowfullscreen webkitallowfullscreen mozAllowFullScreen allow='autoplay *; fullscreen *; encrypted-media *' />");
             iframe.css("border", "none");
-            iframe.css("position", "absolute");
-            iframe.css("top", "0");
-            iframe.css("left", "0");
             iframe.css("height", "100%");
             iframe.css("width", "100%");
 
-            var div = $("<div id='kaltura-video-container'/>");
-            div.css("position", "relative");
-            div.css("padding-top", "20px");
-            div.css("padding-bottom", "56.25%");
-            div.css("height", "0");
-            div.css("overflow", "hidden");
-            div.append(iframe);
-            return div; 
+            var kvdiv = $("<div id='kaltura-video'/>");
+            var height = ( ( $(media).attr("height") || 0 ) > 0 ) ? $(media).attr("height") :
+                         ( ( $(media).height() || 0 ) > 0 ) ? $(media).height() :
+                         285;
+            kvdiv.css("position", "relative");
+            kvdiv.css("height", height + "px");
+            kvdiv.append(iframe);
+
+            var kvcdiv = $("<div id='kaltura-video-container'/>");
+            var width = ( ( $(media).attr("width") || 0 ) > 0 ) ? $(media).attr("width") :
+                        ( ( $(media).width() || 0 ) > 0 ) ? $(media).width() :
+                        400;
+            kvcdiv.css("position", "relative");
+            kvcdiv.css("max-width", width + "px");
+            kvcdiv.append(kvdiv);
+            return kvcdiv;
         },
 
         // converts a <span with an embedded kaltura LTI image to an iframe for LTI rendering
